@@ -1,15 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>WORDLE</h1>
+
+  <div class="word-rows">
+    <WordRow/>
+    <WordRow/>
+    <WordRow/>
+    <WordRow/>
+    <WordRow/>
+    <WordRow/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import WordRow from './components/WordRow.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    WordRow
+  },
+  mounted() {
+    window.addEventListener('keydown', e => {
+      console.log('pressed', e.key);
+    });
   }
 }
 </script>
@@ -21,6 +34,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+.word-rows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>
