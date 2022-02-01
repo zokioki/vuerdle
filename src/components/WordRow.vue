@@ -39,6 +39,9 @@ export default {
     },
     removeLetter() {
       this.letters.pop();
+    },
+    toString() {
+      return this.letters.join('');
     }
   }
 }

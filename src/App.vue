@@ -22,12 +22,28 @@ export default {
   },
   data() {
     return {
-      wordList: WordList.trim().split('\n')
+      wordList: WordList.trim().split('\n'),
+      gameState: {
+        answer: null,
+        currentWordRow: 0,
+        submittedWords: []
+      }
     };
+  },
+  created() {
+    const savedGameState = JSON.parse(window.localStorage.getItem('gameState'));
+    if (savedGameState) this.gameState = savedGameState;
+
+    this.$watch('gameState', (newState) => {
+      const state = JSON.stringify(newState);
+      window.localStorage.setItem('gameState', state);
+    }, { deep: true });
+
+    if (!this.gameState.answer) this.gameState.answer = this.wordList[Math.floor(Math.random() * this.wordList.length)];
   },
   mounted() {
     window.addEventListener('keydown', e => {
-      const wordRef = this.$refs.word0;
+      const wordRef = this.$refs[`word${this.gameState.currentWordRow}`];
 
       if (e.key.match(/^[a-zA-Z]{1}$/)) {
         wordRef.addLetter(e.key);
@@ -35,6 +51,15 @@ export default {
         wordRef.removeLetter();
       } else if (e.key === 'Enter') {
         // check answer...
+        const word = wordRef.toString();
+        if (word.length === 5) {
+          this.gameState.submittedWords.push(word);
+          this.gameState.currentWordRow += 1;
+
+          if (word === this.gameState.answer) {
+            // winner...
+          }
+        }
       }
     });
   }
