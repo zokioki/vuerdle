@@ -2,12 +2,12 @@
   <h1>WORDLE</h1>
 
   <div class="word-rows">
-    <WordRow/>
-    <WordRow/>
-    <WordRow/>
-    <WordRow/>
-    <WordRow/>
-    <WordRow/>
+    <WordRow ref="word0"/>
+    <WordRow ref="word1"/>
+    <WordRow ref="word2"/>
+    <WordRow ref="word3"/>
+    <WordRow ref="word4"/>
+    <WordRow ref="word5"/>
   </div>
 </template>
 
@@ -21,7 +21,15 @@ export default {
   },
   mounted() {
     window.addEventListener('keydown', e => {
-      console.log('pressed', e.key);
+      const wordRef = this.$refs.word0;
+
+      if (e.key.match(/^[a-zA-Z]{1}$/)) {
+        wordRef.addLetter(e.key);
+      } else if (e.key === 'Backspace') {
+        wordRef.removeLetter();
+      } else if (e.key === 'Enter') {
+        // check answer...
+      }
     });
   }
 }

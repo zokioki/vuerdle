@@ -1,20 +1,44 @@
 <template>
   <div class="word-row">
-    <div class="letter-tile">{{letters[0]}}</div>
-    <div class="letter-tile">{{letters[1]}}</div>
-    <div class="letter-tile">{{letters[2]}}</div>
-    <div class="letter-tile">{{letters[3]}}</div>
-    <div class="letter-tile">{{letters[4]}}</div>
+    <LetterTile ref="word0" :letter="letters[0]"/>
+    <LetterTile ref="word1" :letter="letters[1]"/>
+    <LetterTile ref="word2" :letter="letters[2]"/>
+    <LetterTile ref="word3" :letter="letters[3]"/>
+    <LetterTile ref="word4" :letter="letters[4]"/>
   </div>
 </template>
 
 <script>
+import { reactive } from 'vue';
+import LetterTile from './LetterTile.vue'
+
 export default {
   name: 'WordRow',
+  components: {
+    LetterTile
+  },
   props: {
-    letters: {
-      type: Array,
-      default: () => []
+    initialLetters: {
+      type: Object,
+      default: () => reactive({ items: [] })
+    },
+    letterLimit: {
+      type: Number,
+      default: 5
+    }
+  },
+  computed: {
+    letters() {
+      return this.initialLetters.items;
+    }
+  },
+  methods: {
+    addLetter(value) {
+      if (this.letters.length >= this.letterLimit) return;
+      this.letters.push(value);
+    },
+    removeLetter() {
+      this.letters.pop();
     }
   }
 }
@@ -24,20 +48,5 @@ export default {
 .word-row {
   display: flex;
   flex-direction: row;
-}
-
-.letter-tile {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  text-transform: capitalize;
-  font-weight: 600;
-  font-size: 1.5em;
-  border: 2px #c5c5c5 solid;
-  width: 60px;
-  height: 60px;
-  margin: 6px;
-  user-select: none;
 }
 </style>
