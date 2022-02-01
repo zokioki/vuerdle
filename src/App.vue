@@ -13,11 +13,17 @@
 
 <script>
 import WordRow from './components/WordRow.vue'
+import WordList from './data/word-list.txt'
 
 export default {
   name: 'App',
   components: {
     WordRow
+  },
+  data() {
+    return {
+      wordList: WordList.trim().split('\n')
+    };
   },
   mounted() {
     window.addEventListener('keydown', e => {
