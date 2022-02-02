@@ -86,6 +86,9 @@ export default {
   width: 600px;
   z-index: 999;
 }
+.dark-mode .instructions-content {
+  background-color: #4a4a4a;
+}
 .instructions-open {
   cursor: pointer;
 }

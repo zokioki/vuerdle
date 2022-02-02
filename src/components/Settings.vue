@@ -6,7 +6,13 @@
       <div class="settings-backdrop"></div>
       <div class="settings-content">
         <button class="settings-close" @click="hide()">X</button>
-        <p>Settings here...</p>
+        <p>Settings</p>
+        <p>
+          <label>
+            <input type="checkbox" name="darkMode" :checked="parent.gameState.darkMode" @change="emitSettingsChange">
+            Dark Mode
+          </label>
+        </p>
       </div>
     </div>
   </div>
@@ -15,6 +21,13 @@
 <script>
 export default {
   name: 'Settings',
+  emits: ['updateSettings'],
+  props: {
+    parent: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       showSettings: false
@@ -26,6 +39,9 @@ export default {
     },
     hide() {
       this.showSettings = false;
+    },
+    emitSettingsChange(event) {
+      this.$emit('updateSettings', { target: event.target });
     }
   }
 }
@@ -53,6 +69,9 @@ export default {
   padding: 1em;
   width: 600px;
   z-index: 999;
+}
+.dark-mode .settings-content {
+  background-color: #4a4a4a;
 }
 .settings-open {
   cursor: pointer;
