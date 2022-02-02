@@ -34,15 +34,18 @@ export default {
     }
   },
   methods: {
-    positionInAnswer() {
+    positionsInAnswer() {
       const gameState = JSON.parse(window.localStorage.getItem('gameState'));
-      return gameState.answer.indexOf(this.letter);
+      return gameState.answer.split('').reduce((positions, letter, index) => {
+        if (letter === this.letter) positions.push(index);
+        return positions;
+      }, []);
     },
     isInAnswer() {
-      return this.positionInAnswer() > -1;
+      return this.positionsInAnswer().length > 0;
     },
     isInCorrectPosition() {
-      return this.position === this.positionInAnswer();
+      return this.positionsInAnswer().includes(this.position);
     }
   }
 }
