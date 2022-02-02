@@ -9,6 +9,36 @@
         <p>Guess the <strong>WORDLE</strong> in 6 tries.</p>
         <p>Each guess must be a valid 5 letter word. Hit the Enter button to submit.</p>
         <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
+        <hr>
+        <div class="examples">
+          <strong>Examples</strong>
+          <div class="word-row">
+            <div class="letter-tile correct">W</div>
+            <div class="letter-tile">E</div>
+            <div class="letter-tile">A</div>
+            <div class="letter-tile">R</div>
+            <div class="letter-tile">Y</div>
+          </div>
+          <div>The letter <strong>W</strong> is in the word and in the correct spot.</div>
+
+          <div class="word-row">
+            <div class="letter-tile">P</div>
+            <div class="letter-tile mispositioned">I</div>
+            <div class="letter-tile">L</div>
+            <div class="letter-tile">L</div>
+            <div class="letter-tile">S</div>
+          </div>
+          <div>The letter <strong>I</strong> is in the word but in the wrong spot.</div>
+
+          <div class="word-row">
+            <div class="letter-tile">V</div>
+            <div class="letter-tile">A</div>
+            <div class="letter-tile">G</div>
+            <div class="letter-tile incorrect">U</div>
+            <div class="letter-tile">E</div>
+          </div>
+          <div>The letter <strong>U</strong> is not in the word in any spot.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -62,5 +92,10 @@ export default {
 .instructions-close {
   float: right;
   cursor: pointer;
+}
+.examples .letter-tile {
+  width: 40px;
+  height: 40px;
+  margin: 4px;
 }
 </style>
