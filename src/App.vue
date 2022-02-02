@@ -2,16 +2,17 @@
   <h1>WORDLE</h1>
 
   <div class="word-rows">
-    <WordRow ref="word0"/>
-    <WordRow ref="word1"/>
-    <WordRow ref="word2"/>
-    <WordRow ref="word3"/>
-    <WordRow ref="word4"/>
-    <WordRow ref="word5"/>
+    <WordRow ref="word0" :initial-letters="getInitialLetters(0)"/>
+    <WordRow ref="word1" :initial-letters="getInitialLetters(1)"/>
+    <WordRow ref="word2" :initial-letters="getInitialLetters(2)"/>
+    <WordRow ref="word3" :initial-letters="getInitialLetters(3)"/>
+    <WordRow ref="word4" :initial-letters="getInitialLetters(4)"/>
+    <WordRow ref="word5" :initial-letters="getInitialLetters(5)"/>
   </div>
 </template>
 
 <script>
+import { reactive } from 'vue';
 import WordRow from './components/WordRow.vue'
 import WordList from './data/word-list.txt'
 
@@ -62,6 +63,12 @@ export default {
         }
       }
     });
+  },
+  methods: {
+    getInitialLetters(rowIndex) {
+      const word = this.gameState.submittedWords[rowIndex] || '';
+      return reactive({ items: word.split('') });
+    }
   }
 }
 </script>

@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import { reactive } from 'vue';
 import LetterTile from './LetterTile.vue'
 
 export default {
@@ -20,7 +19,7 @@ export default {
   props: {
     initialLetters: {
       type: Object,
-      default: () => reactive({ items: [] })
+      required: true
     },
     letterLimit: {
       type: Number,
