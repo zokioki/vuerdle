@@ -21,8 +21,8 @@
 import { reactive } from 'vue';
 import Instructions from './components/Instructions.vue';
 import Settings from './components/Settings.vue';
-import WordRow from './components/WordRow.vue'
-import WordList from './data/word-list.txt'
+import WordRow from './components/WordRow.vue';
+import WordList from './data/word-list.txt';
 
 export default {
   name: 'App',
