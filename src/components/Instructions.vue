@@ -83,7 +83,7 @@ export default {
   background-color: white;
   border-radius: 6px;
   padding: 1em;
-  width: 600px;
+  width: 400px;
   z-index: 999;
 }
 .dark-mode .instructions-content {
