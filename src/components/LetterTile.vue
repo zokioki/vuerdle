@@ -68,18 +68,18 @@ export default {
   user-select: none;
 }
 .correct {
-  border-color: green;
-  background-color: green;
+  border-color: #6aaa64;
+  background-color: #6aaa64;
   color: white;
 }
 .incorrect {
-  border-color: gray;
-  background-color: gray;
+  border-color: #787c7e;
+  background-color: #787c7e;
   color: white;
 }
 .mispositioned {
-  border-color: orange;
-  background-color: orange;
+  border-color: #c9b458;
+  background-color: #c9b458;
   color: white;
 }
 </style>
