@@ -1,5 +1,5 @@
 <template>
-  <div class="letter-tile">
+  <div class="letter-tile" :class="classObject">
     {{ letter }}
   </div>
 </template>
@@ -12,6 +12,37 @@ export default {
       type: String,
       required: true,
       default: ''
+    },
+    position: {
+      type: Number,
+      required: true
+    },
+    parent: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    classObject() {
+      if (!this.parent.isSubmitted()) return {};
+
+      return {
+        correct: this.isInCorrectPosition(),
+        incorrect: !this.isInAnswer(),
+        mispositioned: this.isInAnswer() && !this.isInCorrectPosition()
+      };
+    }
+  },
+  methods: {
+    positionInAnswer() {
+      const gameState = JSON.parse(window.localStorage.getItem('gameState'));
+      return gameState.answer.indexOf(this.letter);
+    },
+    isInAnswer() {
+      return this.positionInAnswer() > -1;
+    },
+    isInCorrectPosition() {
+      return this.position === this.positionInAnswer();
     }
   }
 }
@@ -31,5 +62,20 @@ export default {
   height: 60px;
   margin: 6px;
   user-select: none;
+}
+.correct {
+  border-color: green;
+  background-color: green;
+  color: white;
+}
+.incorrect {
+  border-color: gray;
+  background-color: gray;
+  color: white;
+}
+.mispositioned {
+  border-color: orange;
+  background-color: orange;
+  color: white;
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
   <div class="word-row">
-    <LetterTile ref="word0" :letter="letters[0]"/>
-    <LetterTile ref="word1" :letter="letters[1]"/>
-    <LetterTile ref="word2" :letter="letters[2]"/>
-    <LetterTile ref="word3" :letter="letters[3]"/>
-    <LetterTile ref="word4" :letter="letters[4]"/>
+    <LetterTile ref="word0" :letter="letters[0]" :position="0" :parent="this"/>
+    <LetterTile ref="word1" :letter="letters[1]" :position="1" :parent="this"/>
+    <LetterTile ref="word2" :letter="letters[2]" :position="2" :parent="this"/>
+    <LetterTile ref="word3" :letter="letters[3]" :position="3" :parent="this"/>
+    <LetterTile ref="word4" :letter="letters[4]" :position="4" :parent="this"/>
   </div>
 </template>
 
@@ -41,6 +41,10 @@ export default {
     },
     toString() {
       return this.letters.join('');
+    },
+    isSubmitted() {
+      const gameState = JSON.parse(window.localStorage.getItem('gameState'));
+      return gameState.submittedWords.includes(this.toString());
     }
   }
 }
