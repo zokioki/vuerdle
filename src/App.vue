@@ -3,7 +3,7 @@
     <div class="header">
       <Instructions/>
       <h1>WORDLE</h1>
-      <div>...</div>
+      <Settings/>
     </div>
 
     <div class="word-rows">
@@ -20,6 +20,7 @@
 <script>
 import { reactive } from 'vue';
 import Instructions from './components/Instructions.vue';
+import Settings from './components/Settings.vue';
 import WordRow from './components/WordRow.vue'
 import WordList from './data/word-list.txt'
 
@@ -27,7 +28,8 @@ export default {
   name: 'App',
   components: {
     WordRow,
-    Instructions
+    Instructions,
+    Settings
   },
   data() {
     return {
