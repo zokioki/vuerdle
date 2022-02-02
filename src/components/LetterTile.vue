@@ -58,6 +58,7 @@ export default {
   align-content: center;
   justify-content: center;
   text-transform: capitalize;
+  text-align: center;
   font-weight: 600;
   font-size: 1.5em;
   border: 2px #c5c5c5 solid;

@@ -1,25 +1,33 @@
 <template>
-  <h1>WORDLE</h1>
+  <div class="game-container">
+    <div class="header">
+      <Instructions/>
+      <h1>WORDLE</h1>
+      <div>...</div>
+    </div>
 
-  <div class="word-rows">
-    <WordRow ref="word0" :initial-letters="getInitialLetters(0)"/>
-    <WordRow ref="word1" :initial-letters="getInitialLetters(1)"/>
-    <WordRow ref="word2" :initial-letters="getInitialLetters(2)"/>
-    <WordRow ref="word3" :initial-letters="getInitialLetters(3)"/>
-    <WordRow ref="word4" :initial-letters="getInitialLetters(4)"/>
-    <WordRow ref="word5" :initial-letters="getInitialLetters(5)"/>
+    <div class="word-rows">
+      <WordRow ref="word0" :initial-letters="getInitialLetters(0)"/>
+      <WordRow ref="word1" :initial-letters="getInitialLetters(1)"/>
+      <WordRow ref="word2" :initial-letters="getInitialLetters(2)"/>
+      <WordRow ref="word3" :initial-letters="getInitialLetters(3)"/>
+      <WordRow ref="word4" :initial-letters="getInitialLetters(4)"/>
+      <WordRow ref="word5" :initial-letters="getInitialLetters(5)"/>
+    </div>
   </div>
 </template>
 
 <script>
 import { reactive } from 'vue';
+import Instructions from './components/Instructions.vue';
 import WordRow from './components/WordRow.vue'
 import WordList from './data/word-list.txt'
 
 export default {
   name: 'App',
   components: {
-    WordRow
+    WordRow,
+    Instructions
   },
   data() {
     return {
@@ -78,8 +86,15 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .word-rows {
