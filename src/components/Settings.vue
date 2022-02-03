@@ -13,6 +13,12 @@
             Dark Mode
           </label>
         </p>
+        <p>
+          <label>
+            <input type="checkbox" name="colorBlindMode" :checked="parent.gameState.colorBlindMode" @change="emitSettingsChange">
+            Color Blind Mode
+          </label>
+        </p>
       </div>
     </div>
   </div>

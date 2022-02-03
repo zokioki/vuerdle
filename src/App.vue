@@ -1,5 +1,5 @@
 <template>
-  <div class="game-root" :class="{ 'dark-mode': gameState.darkMode }">
+  <div class="game-root" :class="{ 'dark-mode': gameState.darkMode, 'color-blind-mode': gameState.colorBlindMode }">
     <div class="game-container">
       <div class="header">
         <Instructions/>

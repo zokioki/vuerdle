@@ -2,7 +2,8 @@ const defaultGameState = {
   answer: null,
   currentWordRow: 0,
   submittedWords: [],
-  darkMode: false
+  darkMode: false,
+  colorBlindMode: false
 }
 
 function savedGameState() {

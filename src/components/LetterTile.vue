@@ -83,4 +83,13 @@ export default {
   background-color: #c9b458;
   color: white;
 }
+
+.color-blind-mode .correct {
+  border-color: #f5793a;
+  background-color: #f5793a;
+}
+.color-blind-mode .mispositioned {
+  border-color: #85c0f9;
+  background-color: #85c0f9;
+}
 </style>
