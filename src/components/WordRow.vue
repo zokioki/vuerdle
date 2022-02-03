@@ -9,7 +9,8 @@
 </template>
 
 <script>
-import LetterTile from './LetterTile.vue'
+import LetterTile from './LetterTile.vue';
+import { savedGameState } from './utils/gameState';
 
 export default {
   name: 'WordRow',
@@ -43,8 +44,7 @@ export default {
       return this.letters.join('');
     },
     isSubmitted() {
-      const gameState = JSON.parse(window.localStorage.getItem('gameState'));
-      return gameState.submittedWords.includes(this.toString());
+      return savedGameState().submittedWords.includes(this.toString());
     }
   }
 }

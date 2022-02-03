@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { savedGameState } from './utils/gameState';
+
 export default {
   name: 'LetterTile',
   props: {
@@ -35,8 +37,7 @@ export default {
   },
   methods: {
     positionsInAnswer() {
-      const gameState = JSON.parse(window.localStorage.getItem('gameState'));
-      return gameState.answer.split('').reduce((positions, letter, index) => {
+      return savedGameState().answer.split('').reduce((positions, letter, index) => {
         if (letter === this.letter) positions.push(index);
         return positions;
       }, []);

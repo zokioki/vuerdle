@@ -21,6 +21,7 @@
 
 <script>
 import { reactive } from 'vue';
+import { defaultGameState, savedGameState } from './components/utils/gameState';
 import Instructions from './components/Instructions.vue';
 import Settings from './components/Settings.vue';
 import WordRow from './components/WordRow.vue';
@@ -36,17 +37,11 @@ export default {
   data() {
     return {
       wordList: WordList.trim().split('\n'),
-      gameState: {
-        answer: null,
-        currentWordRow: 0,
-        submittedWords: [],
-        darkMode: false
-      }
+      gameState: defaultGameState
     };
   },
   created() {
-    const savedGameState = JSON.parse(window.localStorage.getItem('gameState'));
-    if (savedGameState) this.gameState = savedGameState;
+    if (savedGameState()) this.gameState = savedGameState();
 
     this.$watch('gameState', (newState) => {
       const state = JSON.stringify(newState);
