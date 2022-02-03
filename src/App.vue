@@ -8,12 +8,12 @@
       </div>
 
       <div class="word-rows">
-        <WordRow ref="word0" :initial-letters="getInitialLetters(0)"/>
-        <WordRow ref="word1" :initial-letters="getInitialLetters(1)"/>
-        <WordRow ref="word2" :initial-letters="getInitialLetters(2)"/>
-        <WordRow ref="word3" :initial-letters="getInitialLetters(3)"/>
-        <WordRow ref="word4" :initial-letters="getInitialLetters(4)"/>
-        <WordRow ref="word5" :initial-letters="getInitialLetters(5)"/>
+        <WordRow ref="word0" :position="0" :initial-letters="getInitialLetters(0)"/>
+        <WordRow ref="word1" :position="1" :initial-letters="getInitialLetters(1)"/>
+        <WordRow ref="word2" :position="2" :initial-letters="getInitialLetters(2)"/>
+        <WordRow ref="word3" :position="3" :initial-letters="getInitialLetters(3)"/>
+        <WordRow ref="word4" :position="4" :initial-letters="getInitialLetters(4)"/>
+        <WordRow ref="word5" :position="5" :initial-letters="getInitialLetters(5)"/>
       </div>
     </div>
   </div>

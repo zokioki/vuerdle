@@ -25,6 +25,10 @@ export default {
     letterLimit: {
       type: Number,
       default: 5
+    },
+    position: {
+      type: Number,
+      required: true
     }
   },
   computed: {
@@ -44,7 +48,9 @@ export default {
       return this.letters.join('');
     },
     isSubmitted() {
-      return savedGameState().submittedWords.includes(this.toString());
+      const gameState = savedGameState();
+      return gameState.submittedWords.includes(this.toString()) &&
+             this.position < gameState.currentWordRow;
     }
   }
 }
