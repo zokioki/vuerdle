@@ -6,7 +6,7 @@
       <div class="settings-backdrop"></div>
       <div class="settings-content">
         <button class="settings-close" @click="hide()">X</button>
-        <p>Settings</p>
+        <p><strong>Settings</strong></p>
         <p>
           <label>
             <input type="checkbox" name="darkMode" :checked="parent.gameState.darkMode" @change="emitSettingsChange">

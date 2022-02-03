@@ -48,7 +48,8 @@ export default {
       window.localStorage.setItem('gameState', state);
     }, { deep: true });
 
-    if (!this.gameState.answer) this.gameState.answer = this.wordList[Math.floor(Math.random() * this.wordList.length)];
+    const randomWordIndex = Math.floor(Math.random() * this.wordList.length);
+    if (!this.gameState.answer) this.gameState.answer = this.wordList[randomWordIndex];
   },
   mounted() {
     window.addEventListener('keydown', e => {
