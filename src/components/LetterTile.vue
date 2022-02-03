@@ -62,7 +62,7 @@ export default {
   text-align: center;
   font-weight: 600;
   font-size: 1.5em;
-  border: 2px #c5c5c5 solid;
+  border: 2px solid #d3d6da;
   width: 60px;
   height: 60px;
   margin: 6px;
@@ -84,6 +84,12 @@ export default {
   color: white;
 }
 
+.dark-mode .letter-tile {
+  border-color: #3a3a3c;
+}
+.dark-mode .incorrect {
+  background-color: #3a3a3c;
+}
 .color-blind-mode .correct {
   border-color: #f5793a;
   background-color: #f5793a;
