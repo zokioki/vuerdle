@@ -54,6 +54,13 @@ export default {
 </script>
 
 <style>
+:root {
+  --settings-background-color: #ffffff;
+}
+.dark-mode {
+  --settings-background-color: #4a4a4a;
+}
+
 .settings-container {
   position: absolute;
   top: 0;
@@ -70,14 +77,11 @@ export default {
 .settings-content {
   position: relative;
   margin: 2em auto 0 auto;
-  background-color: white;
+  background-color: var(--settings-background-color);
   border-radius: 6px;
   padding: 1em;
   width: 400px;
   z-index: 999;
-}
-.dark-mode .settings-content {
-  background-color: #4a4a4a;
 }
 .settings-open {
   cursor: pointer;

@@ -53,6 +53,23 @@ export default {
 </script>
 
 <style>
+:root {
+  --correct-color: #6aaa64;
+  --incorrect-color: #787c7e;
+  --mispositioned-color: #c9b458;
+  --tile-border-color: #d3d6da;
+}
+
+.dark-mode {
+  --incorrect-color: #3a3a3c;
+  --tile-border-color: #3a3a3c;
+}
+
+.color-blind-mode {
+  --correct-color: #f5793a;
+  --mispositioned-color: #85c0f9;
+}
+
 .letter-tile {
   display: flex;
   flex-direction: column;
@@ -62,40 +79,25 @@ export default {
   text-align: center;
   font-weight: 600;
   font-size: 1.5em;
-  border: 2px solid #d3d6da;
+  border: 2px solid var(--tile-border-color);
   width: 60px;
   height: 60px;
   margin: 6px;
   user-select: none;
 }
 .correct {
-  border-color: #6aaa64;
-  background-color: #6aaa64;
+  border-color: var(--correct-color);
+  background-color: var(--correct-color);
   color: white;
 }
 .incorrect {
-  border-color: #787c7e;
-  background-color: #787c7e;
+  border-color: var(--incorrect-color);
+  background-color: var(--incorrect-color);
   color: white;
 }
 .mispositioned {
-  border-color: #c9b458;
-  background-color: #c9b458;
+  border-color: var(--mispositioned-color);
+  background-color: var(--mispositioned-color);
   color: white;
-}
-
-.dark-mode .letter-tile {
-  border-color: #3a3a3c;
-}
-.dark-mode .incorrect {
-  background-color: #3a3a3c;
-}
-.color-blind-mode .correct {
-  border-color: #f5793a;
-  background-color: #f5793a;
-}
-.color-blind-mode .mispositioned {
-  border-color: #85c0f9;
-  background-color: #85c0f9;
 }
 </style>

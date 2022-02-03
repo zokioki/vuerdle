@@ -88,6 +88,16 @@ export default {
 </script>
 
 <style>
+:root {
+  --background-color: #ffffff;
+  --text-color: #2c3e50;
+}
+
+.dark-mode {
+  --background-color: #121213;
+  --text-color: #ffffff;
+}
+
 body {
   margin: 0;
 }
@@ -96,15 +106,11 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  background-color: var(--background-color);
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   height: 100vh;
-}
-
-.game-root.dark-mode {
-  background-color: #121213;
-  color: white;
 }
 
 .header {

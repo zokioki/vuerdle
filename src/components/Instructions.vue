@@ -64,6 +64,13 @@ export default {
 </script>
 
 <style>
+:root {
+  --instructions-background-color: #ffffff;
+}
+.dark-mode {
+  --instructions-background-color: #4a4a4a;
+}
+
 .instructions-container {
   position: absolute;
   top: 0;
@@ -80,14 +87,11 @@ export default {
 .instructions-content {
   position: relative;
   margin: 2em auto 0 auto;
-  background-color: white;
+  background-color: var(--instructions-background-color);
   border-radius: 6px;
   padding: 1em;
   width: 400px;
   z-index: 999;
-}
-.dark-mode .instructions-content {
-  background-color: #4a4a4a;
 }
 .instructions-open {
   cursor: pointer;
