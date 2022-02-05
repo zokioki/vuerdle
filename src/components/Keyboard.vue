@@ -70,9 +70,21 @@ export default {
 </script>
 
 <style>
+:root {
+  --keyboard-background-color: #e7ebf2;
+  --key-background-color: #ffffff;
+  --key-background-color-active: #efefef;
+}
+
+.dark-mode {
+  --keyboard-background-color: #585858;
+  --key-background-color: #818181;
+  --key-background-color-active: #707070;
+}
+
 .keyboard {
   margin-top: 2em;
-  background-color: #e7ebf2;
+  background-color: var(--keyboard-background-color);
   padding: 12px 8px;
   border-radius: 6px;
 }
@@ -87,17 +99,21 @@ export default {
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-  height: 50px;
+  height: 40px;
   width: 28px;
   border-bottom: 1px solid #b5b5b5;
   border-radius: 4px;
   box-shadow: 0 0 3px -1px rgb(0 0 0 / 30%);
   box-sizing: border-box;
-  background-color: #ffffff;
+  background-color: var(--key-background-color);
   padding: 4px;
   margin: 0 4px;
   text-transform: capitalize;
   font-weight: 400;
   cursor: pointer;
+  user-select: none;
+}
+.keyboard-key:active {
+  background-color: var(--key-background-color-active);
 }
 </style>
