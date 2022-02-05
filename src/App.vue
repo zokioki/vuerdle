@@ -15,6 +15,8 @@
         <WordRow ref="word4" :position="4" :initial-letters="getInitialLetters(4)"/>
         <WordRow ref="word5" :position="5" :initial-letters="getInitialLetters(5)"/>
       </div>
+
+      <Keyboard/>
     </div>
   </div>
 </template>
@@ -25,6 +27,7 @@ import { defaultGameState, savedGameState } from './components/utils/gameState';
 import Instructions from './components/Instructions.vue';
 import Settings from './components/Settings.vue';
 import WordRow from './components/WordRow.vue';
+import Keyboard from './components/Keyboard.vue';
 import WordList from './data/word-list.txt';
 
 export default {
@@ -32,7 +35,8 @@ export default {
   components: {
     WordRow,
     Instructions,
-    Settings
+    Settings,
+    Keyboard
   },
   data() {
     return {
