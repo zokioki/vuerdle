@@ -26,7 +26,6 @@
     </div>
 
     <div class="keyboard-row">
-      <div class="keyboard-key" @click="handleKeyClick">⏎</div>
       <div class="keyboard-key" @click="handleKeyClick">z</div>
       <div class="keyboard-key" @click="handleKeyClick">x</div>
       <div class="keyboard-key" @click="handleKeyClick">c</div>
@@ -37,7 +36,11 @@
       <div class="keyboard-key" @click="handleKeyClick">i</div>
       <div class="keyboard-key" @click="handleKeyClick">o</div>
       <div class="keyboard-key" @click="handleKeyClick">p</div>
+    </div>
+
+    <div class="keyboard-row">
       <div class="keyboard-key" @click="handleKeyClick">←</div>
+      <div class="keyboard-key" @click="handleKeyClick">⏎</div>
     </div>
   </div>
 </template>
@@ -85,7 +88,7 @@ export default {
   justify-content: center;
   flex-grow: 1;
   height: 50px;
-  width: 36px;
+  width: 28px;
   border-bottom: 1px solid #b5b5b5;
   border-radius: 4px;
   box-shadow: 0 0 3px -1px rgb(0 0 0 / 30%);
