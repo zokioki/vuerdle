@@ -12,12 +12,7 @@
       </div>
 
       <div class="word-rows">
-        <WordRow ref="word0" :position="0" :initial-letters="getInitialLetters(0)"/>
-        <WordRow ref="word1" :position="1" :initial-letters="getInitialLetters(1)"/>
-        <WordRow ref="word2" :position="2" :initial-letters="getInitialLetters(2)"/>
-        <WordRow ref="word3" :position="3" :initial-letters="getInitialLetters(3)"/>
-        <WordRow ref="word4" :position="4" :initial-letters="getInitialLetters(4)"/>
-        <WordRow ref="word5" :position="5" :initial-letters="getInitialLetters(5)"/>
+        <WordRow v-for="(n, index) in 6" :key="n" ref="wordRows" :position="index" :initial-letters="getInitialLetters(index)"/>
       </div>
 
       <Keyboard/>
@@ -65,7 +60,7 @@ export default {
     window.addEventListener('keydown', e => {
       if (this.isGameComplete) return;
 
-      const wordRef = this.$refs[`word${this.gameState.currentWordRow}`];
+      const wordRef = this.$refs.wordRows[this.gameState.currentWordRow];
 
       if (e.key.match(/^[a-zA-Z]{1}$/)) {
         wordRef.addLetter(e.key);
