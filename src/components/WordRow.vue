@@ -4,7 +4,8 @@
       v-for="(n, index) in this.letterLimit"
       :key="n"
       :letter="letters[index]"
-      :position="index" :parent="this"
+      :position="index"
+      :parent="this"
     />
   </div>
 </template>
