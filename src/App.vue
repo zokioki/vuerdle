@@ -7,6 +7,10 @@
         <Settings :parent="this" @update-settings="updateSettings"/>
       </div>
 
+      <div class="game-message" v-if="message">
+        {{message}}
+      </div>
+
       <div class="word-rows">
         <WordRow ref="word0" :position="0" :initial-letters="getInitialLetters(0)"/>
         <WordRow ref="word1" :position="1" :initial-letters="getInitialLetters(1)"/>
@@ -41,7 +45,8 @@ export default {
   data() {
     return {
       wordList: WordList.trim().split('\n'),
-      gameState: defaultGameState
+      gameState: defaultGameState,
+      message: null
     };
   },
   created() {
@@ -72,6 +77,7 @@ export default {
 
           if (word === this.gameState.answer) {
             // winner...
+            this.setMessage('You did it!');
           }
         }
       }
@@ -87,6 +93,10 @@ export default {
       const value = target.type === 'checkbox' ? target.checked : target.value;
 
       this.gameState[target.name] = value;
+    },
+    setMessage(message, timeout = null) {
+      this.message = message;
+      setTimeout(() => { this.message = null; }, timeout || 3000);
     }
   }
 }
@@ -128,5 +138,19 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.game-message {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 72px;
+  font-size: 1.25em;
+  background-color: var(--text-color);
+  color: var(--background-color);
+  padding: 0.5em 0.75em;
+  margin: 0 auto;
+  border-radius: 6px;
+  width: fit-content;
 }
 </style>
