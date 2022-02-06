@@ -69,17 +69,8 @@ export default {
       } else if (e.key === 'Backspace') {
         wordRef.removeLetter();
       } else if (e.key === 'Enter') {
-        // check answer...
         const word = wordRef.toString();
-        if (word.length === 5) {
-          this.gameState.submittedWords.push(word);
-          this.gameState.currentWordRow += 1;
-
-          if (word === this.gameState.answer) {
-            // winner...
-            this.setMessage('You did it!');
-          }
-        }
+        this.checkAnswer(word);
       }
     });
   },
@@ -93,6 +84,20 @@ export default {
       const value = target.type === 'checkbox' ? target.checked : target.value;
 
       this.gameState[target.name] = value;
+    },
+    checkAnswer(word) {
+      if (word.length !== 5) return;
+      if (!this.wordList.includes(word)) {
+        this.setMessage('Word not in list', 2000);
+        return;
+      }
+
+      this.gameState.submittedWords.push(word);
+      this.gameState.currentWordRow += 1;
+
+      if (word === this.gameState.answer) {
+        this.setMessage('You did it!');
+      }
     },
     setMessage(message, timeout = null) {
       this.message = message;
