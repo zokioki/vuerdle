@@ -100,9 +100,15 @@ export default {
   float: right;
   cursor: pointer;
 }
+.examples .word-row {
+  margin-top: 1em;
+}
 .examples .letter-tile {
   width: 40px;
   height: 40px;
   margin: 4px;
+}
+.examples .letter-tile:first-child {
+  margin-left: 0;
 }
 </style>
