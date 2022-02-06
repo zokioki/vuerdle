@@ -34,6 +34,7 @@ import Settings from './components/Settings.vue';
 import WordRow from './components/WordRow.vue';
 import Keyboard from './components/Keyboard.vue';
 import WordList from './data/word-list.txt';
+import AllowedGuessList from './data/allowed-guess-list.txt';
 
 export default {
   name: 'App',
@@ -46,6 +47,7 @@ export default {
   data() {
     return {
       wordList: WordList.trim().split('\n'),
+      allowedGuessList: AllowedGuessList.trim().split('\n'),
       gameState: defaultGameState,
       inProgressWord: '',
       message: null
@@ -103,7 +105,7 @@ export default {
     },
     checkAnswer(word) {
       if (word.length !== 5) return;
-      if (!this.wordList.includes(word)) {
+      if (!this.wordList.includes(word) && !this.allowedGuessList.includes(word)) {
         this.setMessage('Word not in list', 2000);
         return;
       }
