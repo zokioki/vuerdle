@@ -63,6 +63,8 @@ export default {
   },
   mounted() {
     window.addEventListener('keydown', e => {
+      if (this.isGameComplete) return;
+
       const wordRef = this.$refs[`word${this.gameState.currentWordRow}`];
 
       if (e.key.match(/^[a-zA-Z]{1}$/)) {
@@ -76,6 +78,12 @@ export default {
         this.checkAnswer(word);
       }
     });
+  },
+  computed: {
+    isGameComplete() {
+      const { submittedWords, answer } = this.gameState;
+      return submittedWords.length === 6 || submittedWords.includes(answer);
+    }
   },
   methods: {
     getInitialLetters(rowIndex) {
