@@ -12,7 +12,13 @@
       </div>
 
       <div class="word-rows">
-        <WordRow v-for="(n, index) in 6" :key="n" ref="wordRows" :position="index" :initial-letters="getInitialLetters(index)"/>
+        <WordRow
+          ref="wordRows"
+          v-for="(n, index) in 6"
+          :key="n"
+          :position="index"
+          :initial-letters="getInitialLetters(index)"
+        />
       </div>
 
       <Keyboard/>
