@@ -46,6 +46,7 @@ export default {
     return {
       wordList: WordList.trim().split('\n'),
       gameState: defaultGameState,
+      inProgressWord: '',
       message: null
     };
   },
@@ -66,8 +67,10 @@ export default {
 
       if (e.key.match(/^[a-zA-Z]{1}$/)) {
         wordRef.addLetter(e.key);
+        this.inProgressWord = wordRef.toString();
       } else if (e.key === 'Backspace') {
         wordRef.removeLetter();
+        this.inProgressWord = wordRef.toString();
       } else if (e.key === 'Enter') {
         const word = wordRef.toString();
         this.checkAnswer(word);
@@ -76,7 +79,11 @@ export default {
   },
   methods: {
     getInitialLetters(rowIndex) {
-      const word = this.gameState.submittedWords[rowIndex] || '';
+      let word = this.gameState.submittedWords[rowIndex] || '';
+      if (!word && rowIndex === this.gameState.currentWordRow) {
+        word = this.inProgressWord;
+      }
+
       return reactive({ items: word.split('') });
     },
     updateSettings(event) {
@@ -92,6 +99,7 @@ export default {
         return;
       }
 
+      this.inProgressWord = '';
       this.gameState.submittedWords.push(word);
       this.gameState.currentWordRow += 1;
 
