@@ -116,6 +116,8 @@ export default {
 
       if (word === this.gameState.answer) {
         this.setMessage('You did it!');
+      } else if (this.isGameComplete) {
+        this.setMessage(this.gameState.answer.toUpperCase());
       }
     },
     setMessage(message, timeout = null) {
