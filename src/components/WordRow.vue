@@ -1,10 +1,11 @@
 <template>
   <div class="word-row">
-    <LetterTile :letter="letters[0]" :position="0" :parent="this"/>
-    <LetterTile :letter="letters[1]" :position="1" :parent="this"/>
-    <LetterTile :letter="letters[2]" :position="2" :parent="this"/>
-    <LetterTile :letter="letters[3]" :position="3" :parent="this"/>
-    <LetterTile :letter="letters[4]" :position="4" :parent="this"/>
+    <LetterTile
+      v-for="(n, index) in this.letterLimit"
+      :key="n"
+      :letter="letters[index]"
+      :position="index" :parent="this"
+    />
   </div>
 </template>
 
