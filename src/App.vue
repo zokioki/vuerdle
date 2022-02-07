@@ -2,7 +2,10 @@
   <div class="game-root" :class="{ 'dark-mode': gameState.darkMode, 'color-blind-mode': gameState.colorBlindMode }">
     <div class="game-container">
       <div class="header">
-        <Instructions/>
+        <div class="button-group">
+          <Instructions/>
+          <button style="cursor: pointer">↣</button>
+        </div>
         <h1>WORDLE</h1>
         <div class="button-group">
           <Statistics ref="statistics" :parent="this"/>
