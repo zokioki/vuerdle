@@ -5,7 +5,7 @@
         <Instructions/>
         <h1>WORDLE</h1>
         <div class="button-group">
-          <Statistics :parent="this"/>
+          <Statistics ref="statistics" :parent="this"/>
           <Settings :parent="this" @update-settings="updateSettings"/>
         </div>
       </div>
@@ -86,6 +86,10 @@ export default {
         this.checkAnswer(word);
       }
     });
+
+    if (this.isGameComplete) {
+      setTimeout(() => { this.$refs.statistics.show(); }, 600);
+    }
   },
   computed: {
     isGameComplete() {
@@ -133,11 +137,24 @@ export default {
         };
 
         this.gameState.previousGames.push(gameData);
+        setTimeout(()=> { this.$refs.statistics.show(); }, 3000);
       }
     },
     setMessage(message, timeout = null) {
       this.message = message;
       setTimeout(() => { this.message = null; }, timeout || 3000);
+    },
+    startNewGame() {
+      const { previousGames } = this.gameState;
+
+      this.gameState = defaultGameState;
+      this.gameState.previousGames = previousGames;
+
+      const randomWordIndex = Math.floor(Math.random() * this.wordList.length);
+      this.gameState.answer = this.wordList[randomWordIndex];
+      this.inProgressWord = '';
+
+      this.setMessage('New game', 2000);
     }
   }
 }

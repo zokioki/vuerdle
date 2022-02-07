@@ -25,6 +25,8 @@
             <span class="stat-description">Max Streak</span>
           </div>
         </div>
+
+        <button @click="startNewGame">New Game</button>
       </div>
     </div>
   </div>
@@ -52,6 +54,10 @@ export default {
     },
     hide() {
       this.showStatistics = false;
+    },
+    startNewGame() {
+      this.parent.startNewGame();
+      this.hide();
     },
     gamesPlayed() {
       return savedGameState().previousGames.length;
