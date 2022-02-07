@@ -26,7 +26,10 @@
           </div>
         </div>
 
-        <button @click="startNewGame">New Game</button>
+        <div class="button-group">
+          <button @click="startNewGame">New Game</button>
+          <button @click="shareGame" v-if="parent.isGameComplete">Share</button>
+        </div>
       </div>
     </div>
   </div>
@@ -58,6 +61,9 @@ export default {
     startNewGame() {
       this.parent.startNewGame();
       this.hide();
+    },
+    shareGame() {
+      console.log('share game...');
     },
     gamesPlayed() {
       return savedGameState().previousGames.length;
@@ -117,6 +123,13 @@ export default {
   padding: 1em;
   max-width: 400px;
   z-index: 999;
+}
+.statistics-content .button-group {
+  margin-top: 2em;
+  justify-content: center;
+}
+.statistics-content .button-group button {
+  cursor: pointer;
 }
 .statistics-open {
   cursor: pointer;
