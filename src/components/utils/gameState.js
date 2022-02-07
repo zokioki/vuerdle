@@ -3,7 +3,8 @@ const defaultGameState = {
   currentWordRow: 0,
   submittedWords: [],
   darkMode: false,
-  colorBlindMode: false
+  colorBlindMode: false,
+  previousGames: []
 }
 
 function savedGameState() {

@@ -4,7 +4,10 @@
       <div class="header">
         <Instructions/>
         <h1>WORDLE</h1>
-        <Settings :parent="this" @update-settings="updateSettings"/>
+        <div class="button-group">
+          <Statistics :parent="this"/>
+          <Settings :parent="this" @update-settings="updateSettings"/>
+        </div>
       </div>
 
       <div class="game-message" v-if="message">
@@ -30,6 +33,7 @@
 import { reactive } from 'vue';
 import { defaultGameState, savedGameState } from './components/utils/gameState';
 import Instructions from './components/Instructions.vue';
+import Statistics from './components/Statistics.vue';
 import Settings from './components/Settings.vue';
 import WordRow from './components/WordRow.vue';
 import Keyboard from './components/Keyboard.vue';
@@ -42,6 +46,7 @@ export default {
     WordRow,
     Instructions,
     Settings,
+    Statistics,
     Keyboard
   },
   data() {
@@ -119,6 +124,16 @@ export default {
       } else if (this.isGameComplete) {
         this.setMessage(this.gameState.answer.toUpperCase());
       }
+
+      if (this.isGameComplete) {
+        const gameData = {
+          answer: this.gameState.answer,
+          won: (word === this.gameState.answer),
+          numberOfGuesses: this.gameState.submittedWords.length
+        };
+
+        this.gameState.previousGames.push(gameData);
+      }
     },
     setMessage(message, timeout = null) {
       this.message = message;
@@ -158,6 +173,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.button-group {
+  display: flex;
 }
 
 .word-rows {
