@@ -196,6 +196,10 @@ body {
   display: flex;
 }
 
+.button-group button:not(:last-child) {
+  margin-right: 6px;
+}
+
 .word-rows {
   display: flex;
   flex-direction: column;
