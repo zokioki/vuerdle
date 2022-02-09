@@ -6,6 +6,7 @@
       <div class="instructions-backdrop"></div>
       <div class="instructions-content">
         <button class="instructions-close button" @click="hide">X</button>
+        <p><strong>How to play</strong></p>
         <p>Guess the word in 6 tries.</p>
         <p>Each guess must be a valid 5 letter word. Hit the <em>Enter</em> button to submit.</p>
         <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
