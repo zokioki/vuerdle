@@ -67,6 +67,7 @@ export default {
 }
 .keyboard-row {
   display: flex;
+  touch-action: manipulation;
 }
 .keyboard-row:not(:last-child) {
   margin-bottom: 10px;
