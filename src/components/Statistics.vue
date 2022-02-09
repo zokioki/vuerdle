@@ -61,8 +61,15 @@ export default {
       this.showStatistics = false;
     },
     startNewGame() {
-      this.parent.startNewGame();
-      this.hide();
+      const shouldStartNewGame = this.parent.isGameComplete || window.confirm(
+        'Are you sure you want to start a new game? ' +
+        'Your progress on the current game will be lost.'
+      );
+
+      if (shouldStartNewGame) {
+        this.parent.startNewGame();
+        this.hide();
+      }
     },
     shareGame() {
       let shareString = 'Vuerdle result:\n';
