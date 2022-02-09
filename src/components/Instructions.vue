@@ -10,7 +10,7 @@
         <p>Guess the word in 6 tries.</p>
         <p>Each guess must be a valid 5 letter word. Hit the <em>Enter</em> button to submit.</p>
         <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
-        <hr>
+
         <div class="examples">
           <strong>Examples</strong>
           <div class="word-row">
