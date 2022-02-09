@@ -4,7 +4,7 @@
       <div class="header">
         <div class="button-group">
           <Instructions/>
-          <button style="cursor: pointer">↣</button>
+          <button class="button">↣</button>
         </div>
         <h1>WORDLE</h1>
         <div class="button-group">
@@ -176,6 +176,23 @@ export default {
 
 body {
   margin: 0;
+}
+
+.button {
+  border: none;
+  border-bottom: 2px #54874f solid;
+  border-radius: 3px;
+  padding: 0.5em 1em;
+  background-color: #6aaa64;
+  color: white;
+  cursor: pointer;
+}
+.button:hover {
+  filter: brightness(0.95);
+}
+.button:active {
+  border-bottom: none;
+  margin-top: 2px;
 }
 
 .game-root {

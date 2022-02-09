@@ -1,11 +1,11 @@
 <template>
   <div class="statistics">
-    <button class="statistics-open" @click="show">%</button>
+    <button class="button" @click="show">%</button>
 
     <div v-show="showStatistics" class="statistics-container">
       <div class="statistics-backdrop"></div>
       <div class="statistics-content">
-        <button class="statistics-close" @click="hide">X</button>
+        <button class="statistics-close button" @click="hide">X</button>
         <p><strong>Statistics</strong></p>
         <div class="stat-entries">
           <div class="stat-entry">
@@ -27,8 +27,8 @@
         </div>
 
         <div class="button-group">
-          <button @click="startNewGame">New Game</button>
-          <button @click="shareGame" v-if="parent.isGameComplete">Share</button>
+          <button class="button" @click="startNewGame">New Game</button>
+          <button class="button" @click="shareGame" v-if="parent.isGameComplete">Share</button>
         </div>
       </div>
     </div>
@@ -134,12 +134,8 @@ export default {
 .statistics-content .button-group button {
   cursor: pointer;
 }
-.statistics-open {
-  cursor: pointer;
-}
 .statistics-close {
   float: right;
-  cursor: pointer;
 }
 .stat-entries {
   display: flex;

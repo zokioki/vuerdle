@@ -1,11 +1,11 @@
 <template>
   <div class="settings">
-    <button class="settings-open" @click="show()">☰</button>
+    <button class="button" @click="show()">☰</button>
 
     <div v-show="showSettings" class="settings-container">
       <div class="settings-backdrop"></div>
       <div class="settings-content">
-        <button class="settings-close" @click="hide()">X</button>
+        <button class="settings-close button" @click="hide()">X</button>
         <p><strong>Settings</strong></p>
         <p>
           <label>
@@ -83,12 +83,8 @@ export default {
   width: 400px;
   z-index: 999;
 }
-.settings-open {
-  cursor: pointer;
-}
 .settings-close {
   float: right;
-  cursor: pointer;
 }
 .examples .letter-tile {
   width: 40px;
