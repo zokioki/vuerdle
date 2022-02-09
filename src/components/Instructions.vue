@@ -6,8 +6,8 @@
       <div class="instructions-backdrop"></div>
       <div class="instructions-content">
         <button class="instructions-close button" @click="hide">X</button>
-        <p>Guess the <strong>WORDLE</strong> in 6 tries.</p>
-        <p>Each guess must be a valid 5 letter word. Hit the Enter button to submit.</p>
+        <p>Guess the word in 6 tries.</p>
+        <p>Each guess must be a valid 5 letter word. Hit the <em>Enter</em> button to submit.</p>
         <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
         <hr>
         <div class="examples">
@@ -23,12 +23,12 @@
 
           <div class="word-row">
             <div class="letter-tile">P</div>
-            <div class="letter-tile mispositioned">I</div>
-            <div class="letter-tile">L</div>
-            <div class="letter-tile">L</div>
-            <div class="letter-tile">S</div>
+            <div class="letter-tile">O</div>
+            <div class="letter-tile mispositioned">L</div>
+            <div class="letter-tile">A</div>
+            <div class="letter-tile">R</div>
           </div>
-          <div>The letter <strong>I</strong> is in the word but in the wrong spot.</div>
+          <div>The letter <strong>L</strong> is in the word but in the wrong spot.</div>
 
           <div class="word-row">
             <div class="letter-tile">V</div>
@@ -90,7 +90,7 @@ export default {
   background-color: var(--instructions-background-color);
   border-radius: 6px;
   padding: 1em;
-  width: 400px;
+  max-width: 400px;
   z-index: 999;
 }
 .instructions-close {

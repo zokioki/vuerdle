@@ -6,7 +6,7 @@
           <Instructions/>
           <button class="button">↣</button>
         </div>
-        <h1>WORDLE</h1>
+        <h1>VUERDLE</h1>
         <div class="button-group">
           <Statistics ref="statistics" :parent="this"/>
           <Settings :parent="this" @update-settings="updateSettings"/>

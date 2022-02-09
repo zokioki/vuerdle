@@ -80,7 +80,7 @@ export default {
   background-color: var(--settings-background-color);
   border-radius: 6px;
   padding: 1em;
-  width: 400px;
+  max-width: 400px;
   z-index: 999;
 }
 .settings-close {

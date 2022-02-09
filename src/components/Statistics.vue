@@ -65,7 +65,7 @@ export default {
       this.hide();
     },
     shareGame() {
-      let shareString = 'Wordle result:\n';
+      let shareString = 'Vuerdle result:\n';
       shareString += this.parent.$refs.wordRows.map(row => row.toShareString()).join('\n');
 
       navigator.clipboard.writeText(shareString);
