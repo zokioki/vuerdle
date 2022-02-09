@@ -63,7 +63,10 @@ export default {
       this.hide();
     },
     shareGame() {
-      console.log('share game...');
+      let shareString = 'Wordle result:\n';
+      shareString += this.parent.$refs.wordRows.map(row => row.toShareString()).join('\n');
+
+      navigator.clipboard.writeText(shareString);
     },
     gamesPlayed() {
       return savedGameState().previousGames.length;

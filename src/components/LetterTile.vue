@@ -47,6 +47,15 @@ export default {
     },
     isInCorrectPosition() {
       return this.positionsInAnswer().includes(this.position);
+    },
+    toIcon() {
+      if (this.isInCorrectPosition()) {
+        return '🟩';
+      } else if (this.isInAnswer() && !this.isInCorrectPosition()) {
+        return '🟨';
+      } else {
+        return '⬛';
+      }
     }
   }
 }

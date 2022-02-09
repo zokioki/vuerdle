@@ -1,6 +1,7 @@
 <template>
   <div class="word-row">
     <LetterTile
+      ref="letterTiles"
       v-for="(n, index) in this.letterLimit"
       :key="n"
       :letter="letters[index]"
@@ -48,6 +49,9 @@ export default {
     },
     toString() {
       return this.letters.join('');
+    },
+    toShareString() {
+      return this.$refs.letterTiles.map(tile => tile.toIcon()).join('');
     },
     isSubmitted() {
       const gameState = savedGameState();
