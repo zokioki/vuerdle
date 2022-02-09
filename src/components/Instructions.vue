@@ -1,11 +1,11 @@
 <template>
   <div class="instructions">
-    <button class="button" @click="show()">?</button>
+    <button class="button" @click="show">?</button>
 
     <div v-show="showInstructions" class="instructions-container">
       <div class="instructions-backdrop"></div>
       <div class="instructions-content">
-        <button class="instructions-close button" @click="hide()">X</button>
+        <button class="instructions-close button" @click="hide">X</button>
         <p>Guess the <strong>WORDLE</strong> in 6 tries.</p>
         <p>Each guess must be a valid 5 letter word. Hit the Enter button to submit.</p>
         <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
