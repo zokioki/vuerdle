@@ -29,6 +29,7 @@
         <div class="button-group">
           <button class="button" @click="startNewGame">New Game</button>
           <button class="button" @click="shareGame" v-if="parent.isGameComplete">Share</button>
+          <div class="share-message" v-if="showShareMessage">Copied to clipboard</div>
         </div>
       </div>
     </div>
@@ -48,7 +49,8 @@ export default {
   },
   data() {
     return {
-      showStatistics: false
+      showStatistics: false,
+      showShareMessage: false,
     }
   },
   methods: {
@@ -67,6 +69,9 @@ export default {
       shareString += this.parent.$refs.wordRows.map(row => row.toShareString()).join('\n');
 
       navigator.clipboard.writeText(shareString);
+
+      this.showShareMessage = true;
+      setTimeout(() => { this.showShareMessage = false; }, 2000);
     },
     gamesPlayed() {
       return savedGameState().previousGames.length;
@@ -150,5 +155,10 @@ export default {
 .stat-number {
   font-size: 1.25em;
   font-weight: 600;
+}
+.share-message {
+  position: absolute;
+  margin: 0 auto;
+  top: 6px;
 }
 </style>
