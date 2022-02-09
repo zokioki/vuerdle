@@ -94,6 +94,12 @@ export default {
   margin: 6px;
   user-select: none;
 }
+.letter-tile:first-child {
+  margin-left: 0;
+}
+.letter-tile:last-child {
+  margin-right: 0;
+}
 .correct {
   border-color: var(--correct-color);
   background-color: var(--correct-color);

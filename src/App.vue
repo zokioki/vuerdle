@@ -195,6 +195,10 @@ body {
   margin-top: 2px;
 }
 
+.button-group {
+  display: flex;
+}
+
 .game-root {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -212,12 +216,16 @@ body {
   justify-content: space-between;
 }
 
-.button-group {
+.header > h1 {
   display: flex;
+  flex-grow: 10;
+  justify-content: center;
+  user-select: none;
 }
 
-.button-group button:not(:last-child) {
-  margin-right: 6px;
+.header > .button-group {
+  flex-grow: 1;
+  justify-content: space-between;
 }
 
 .word-rows {

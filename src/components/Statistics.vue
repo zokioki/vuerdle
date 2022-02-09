@@ -129,7 +129,7 @@ export default {
 }
 .statistics-content .button-group {
   margin-top: 2em;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 .statistics-content .button-group button {
   cursor: pointer;
