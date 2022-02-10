@@ -127,7 +127,10 @@ export default {
       this.gameState.currentWordRow += 1;
 
       if (word === this.gameState.answer) {
-        this.setMessage('You did it!');
+        const messageIndex = this.gameState.submittedWords.length - 1;
+        const messages = ['Brilliant!', 'Excellent!', 'Too easy!', 'You did it!', 'Just made it!', 'Phew'];
+
+        this.setMessage(messages[messageIndex]);
       } else if (this.isGameComplete) {
         this.setMessage(this.gameState.answer.toUpperCase());
       }
