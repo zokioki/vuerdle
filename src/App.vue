@@ -56,7 +56,7 @@ export default {
     return {
       wordList: WordList.trim().split('\n'),
       allowedGuessList: AllowedGuessList.trim().split('\n'),
-      gameState: defaultGameState,
+      gameState: defaultGameState(),
       inProgressWord: '',
       message: null
     };
@@ -148,10 +148,12 @@ export default {
       setTimeout(() => { this.message = null; }, timeout || 3000);
     },
     startNewGame() {
-      const { previousGames } = this.gameState;
+      const { previousGames, darkMode, colorBlindMode } = this.gameState;
 
-      this.gameState = defaultGameState;
+      this.gameState = defaultGameState();
       this.gameState.previousGames = previousGames;
+      this.gameState.darkMode = darkMode;
+      this.gameState.colorBlindMode = colorBlindMode;
 
       const randomWordIndex = Math.floor(Math.random() * this.wordList.length);
       this.gameState.answer = this.wordList[randomWordIndex];

@@ -1,10 +1,12 @@
-const defaultGameState = {
-  answer: null,
-  currentWordRow: 0,
-  submittedWords: [],
-  darkMode: false,
-  colorBlindMode: false,
-  previousGames: []
+function defaultGameState() {
+  return {
+    answer: null,
+    currentWordRow: 0,
+    submittedWords: [],
+    darkMode: false,
+    colorBlindMode: false,
+    previousGames: []
+  };
 }
 
 function savedGameState() {
