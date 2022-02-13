@@ -17,6 +17,10 @@
         {{message}}
       </div>
 
+      <div class="game-hint" v-if="gameState.sharedGameHint">
+        <strong>Hint:</strong> {{gameState.sharedGameHint}}
+      </div>
+
       <div class="word-rows">
         <WordRow
           ref="wordRows"
@@ -69,8 +73,27 @@ export default {
       window.localStorage.setItem('gameState', state);
     }, { deep: true });
 
-    const randomWordIndex = Math.floor(Math.random() * this.wordList.length);
-    if (!this.gameState.answer) this.gameState.answer = this.wordList[randomWordIndex];
+    if (!this.gameState.answer) {
+      const randomWordIndex = Math.floor(Math.random() * this.wordList.length);
+      this.gameState.answer = this.wordList[randomWordIndex];
+    }
+
+    const queryParams = new URLSearchParams(window.location.search);
+    const gameFromParams = window.atob(queryParams.get('g') || '');
+
+    if (gameFromParams) {
+      const separator = ':';
+      const splitIndex = gameFromParams.indexOf(separator);
+      const answer = gameFromParams.substr(0, splitIndex);
+      const hint = gameFromParams.substr(splitIndex + 1);
+
+      this.startNewGame(answer);
+
+      this.gameState.sharedGame = true;
+      this.gameState.sharedGameHint = hint;
+
+      window.history.replaceState({}, document.title, '/');
+    }
   },
   mounted() {
     window.addEventListener('keydown', e => {
@@ -117,7 +140,7 @@ export default {
     },
     checkAnswer(word) {
       if (word.length !== 5) return;
-      if (!this.wordList.includes(word) && !this.allowedGuessList.includes(word)) {
+      if (!this.wordList.includes(word) && !this.allowedGuessList.includes(word) && word !== this.gameState.answer) {
         this.setMessage('Word not in list', 2000);
         return;
       }
@@ -150,19 +173,21 @@ export default {
       this.message = message;
       setTimeout(() => { this.message = null; }, timeout || 3000);
     },
-    startNewGame() {
+    startNewGame(answer = null) {
       const { previousGames, darkMode, colorBlindMode } = this.gameState;
 
       this.gameState = defaultGameState();
       this.gameState.previousGames = previousGames;
       this.gameState.darkMode = darkMode;
       this.gameState.colorBlindMode = colorBlindMode;
-
-      const randomWordIndex = Math.floor(Math.random() * this.wordList.length);
-      this.gameState.answer = this.wordList[randomWordIndex];
       this.inProgressWord = '';
 
-      this.setMessage('New game', 2000);
+      if (answer) {
+        this.gameState.answer = answer;
+      } else {
+        const randomWordIndex = Math.floor(Math.random() * this.wordList.length);
+        this.gameState.answer = this.wordList[randomWordIndex];
+      }
     }
   }
 }
@@ -215,6 +240,10 @@ body {
   height: 100vh;
 }
 
+.game-container {
+  max-width: 375px;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -251,5 +280,9 @@ body {
   margin: 0 auto;
   border-radius: 6px;
   width: fit-content;
+}
+
+.game-hint {
+  text-align: center;
 }
 </style>

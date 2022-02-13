@@ -68,6 +68,7 @@ export default {
 
       if (shouldStartNewGame) {
         this.parent.startNewGame();
+        this.parent.setMessage('New game', 2000);
         this.hide();
       }
     },

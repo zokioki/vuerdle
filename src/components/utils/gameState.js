@@ -5,6 +5,8 @@ function defaultGameState() {
     submittedWords: [],
     darkMode: false,
     colorBlindMode: false,
+    sharedGame: false,
+    sharedGameHint: null,
     previousGames: []
   };
 }
