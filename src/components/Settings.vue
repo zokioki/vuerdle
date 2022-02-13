@@ -19,6 +19,9 @@
             Color Blind Mode
           </label>
         </p>
+        <p>
+          <a href="#" @click.prevent="resetData">Reset data</a>
+        </p>
       </div>
     </div>
   </div>
@@ -48,6 +51,12 @@ export default {
     },
     emitSettingsChange(event) {
       this.$emit('updateSettings', { target: event.target });
+    },
+    resetData() {
+      if (confirm('This will clear all game history and settings. Are you sure?')) {
+        this.parent.resetData();
+        this.hide();
+      }
     }
   }
 }

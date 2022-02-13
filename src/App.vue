@@ -188,6 +188,12 @@ export default {
         const randomWordIndex = Math.floor(Math.random() * this.wordList.length);
         this.gameState.answer = this.wordList[randomWordIndex];
       }
+    },
+    resetData() {
+      this.gameState = defaultGameState();
+      this.startNewGame();
+
+      this.setMessage('Data reset', 2000);
     }
   }
 }
