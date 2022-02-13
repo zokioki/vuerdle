@@ -140,7 +140,7 @@ export default {
     },
     checkAnswer(word) {
       if (word.length !== 5) return;
-      if (!this.wordList.includes(word) && !this.allowedGuessList.includes(word) && word !== this.gameState.answer) {
+      if (!this.gameState.sharedGame && !this.wordList.includes(word) && !this.allowedGuessList.includes(word)) {
         this.setMessage('Word not in list', 2000);
         return;
       }
