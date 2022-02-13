@@ -4,7 +4,7 @@
       <div class="header">
         <div class="button-group">
           <Instructions/>
-          <button class="button">↣</button>
+          <ShareGame/>
         </div>
         <h1>VUERDLE</h1>
         <div class="button-group">
@@ -41,6 +41,7 @@ import { reactive } from 'vue';
 import { defaultGameState, savedGameState } from './components/utils/gameState';
 import Instructions from './components/Instructions.vue';
 import Statistics from './components/Statistics.vue';
+import ShareGame from './components/ShareGame.vue';
 import Settings from './components/Settings.vue';
 import WordRow from './components/WordRow.vue';
 import Keyboard from './components/Keyboard.vue';
@@ -53,6 +54,7 @@ export default {
     WordRow,
     Instructions,
     Settings,
+    ShareGame,
     Statistics,
     Keyboard
   },
@@ -230,9 +232,37 @@ body {
   border-bottom: none;
   margin-top: 2px;
 }
+.button:disabled {
+  opacity: 0.7;
+}
 
 .button-group {
   display: flex;
+}
+
+input[type="text"] {
+  appearance: none;
+  background: var(--background-color);
+  background-image: none;
+  border: 0.05rem solid #bcc3ce;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: var(--text-color);
+  display: block;
+  font-size: 1rem;
+  height: 2rem;
+  margin: 0.25rem 0;
+  max-width: 100%;
+  outline: 0;
+  padding: 0.25rem 0.4rem;
+  position: relative;
+  transition: background .2s,border .2s,box-shadow .2s,color .2s;
+  width: 100%;
+}
+
+input[type="text"]:focus {
+  border-color: #6aaa64;
+  box-shadow: 0 0 0 0.1rem rgb(85 217 120 / 25%);
 }
 
 .game-root {
