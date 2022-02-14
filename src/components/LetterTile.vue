@@ -26,13 +26,17 @@ export default {
   },
   computed: {
     classObject() {
-      if (!this.parent.isSubmitted()) return {};
-
-      return {
-        correct: this.isInCorrectPosition(),
-        incorrect: !this.isInAnswer(),
-        mispositioned: this.isInAnswer() && !this.isInCorrectPosition()
-      };
+      if (this.parent.isSubmitted()) {
+        return {
+          correct: this.isInCorrectPosition(),
+          incorrect: !this.isInAnswer(),
+          mispositioned: this.isInAnswer() && !this.isInCorrectPosition()
+        };
+      } else {
+        return {
+          filled: !!this.letter.length
+        };
+      }
     }
   },
   methods: {
@@ -67,11 +71,13 @@ export default {
   --incorrect-color: #787c7e;
   --mispositioned-color: #c9b458;
   --tile-border-color: #d3d6da;
+  --filled-tile-border-color: #8f8f8f;
 }
 
 .dark-mode {
   --incorrect-color: #3a3a3c;
   --tile-border-color: #3a3a3c;
+  --filled-tile-border-color: #7e7e7e;
 }
 
 .color-blind-mode {
@@ -99,6 +105,9 @@ export default {
 }
 .letter-tile:last-child {
   margin-right: 0;
+}
+.filled {
+  border-color: var(--filled-tile-border-color);
 }
 .correct {
   border-color: var(--correct-color);
