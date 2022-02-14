@@ -81,7 +81,9 @@ export default {
     }
 
     const queryParams = new URLSearchParams(window.location.search);
-    const gameFromParams = window.atob(queryParams.get('g') || '');
+    const gameFromParams = window.decodeURIComponent(
+      window.atob(queryParams.get('g') || '')
+    );
 
     if (gameFromParams) {
       const separator = ':';

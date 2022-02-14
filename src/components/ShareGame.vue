@@ -62,7 +62,9 @@ export default {
     copyShareLink() {
       let shareString = 'Check out this game:\n';
       let shareUrl = window.location.origin;
-      let params = window.btoa(`${this.shareGameAnswer}::${this.shareGameHint}`);
+      let params = window.btoa(
+        window.encodeURIComponent(`${this.shareGameAnswer}::${this.shareGameHint}`)
+      );
 
       navigator.clipboard.writeText(`${shareString}${shareUrl}?g=${params}`);
     }
