@@ -14,7 +14,7 @@
       <p>
         <label>
           <div>Hint <small>(optional)</small></div>
-          <input type="text" maxlength="100" v-model="shareGameHint" placeholder="e.g. orange, banana, apple">
+          <input type="text" maxlength="40" v-model="shareGameHint" placeholder="e.g. orange, banana, apple">
         </label>
       </p>
       <div>
