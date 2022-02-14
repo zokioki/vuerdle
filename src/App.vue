@@ -207,11 +207,13 @@ export default {
 :root {
   --background-color: #ffffff;
   --text-color: #2c3e50;
+  --link-color: #5374d5;
 }
 
 .dark-mode {
   --background-color: #121213;
   --text-color: #ffffff;
+  --link-color: var(--text-color);
 }
 
 body {
@@ -265,6 +267,16 @@ input[type="text"] {
 input[type="text"]:focus {
   border-color: #6aaa64;
   box-shadow: 0 0 0 0.1rem rgb(85 217 120 / 25%);
+}
+
+a {
+  color: var(--link-color);
+  text-underline-offset: 0.25rem;
+  text-decoration-thickness: 0.08rem;
+}
+
+a:hover {
+  filter: brightness(0.85);
 }
 
 .game-root {
