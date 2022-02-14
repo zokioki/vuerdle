@@ -86,10 +86,10 @@ export default {
     );
 
     if (gameFromParams) {
-      const separator = ':';
+      const separator = '::';
       const splitIndex = gameFromParams.indexOf(separator);
       const answer = gameFromParams.substr(0, splitIndex);
-      const hint = gameFromParams.substr(splitIndex + 1);
+      const hint = gameFromParams.substr(splitIndex + separator.length);
 
       this.startNewGame(answer);
 

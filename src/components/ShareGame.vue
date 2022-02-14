@@ -20,11 +20,12 @@
             <input type="text" maxlength="100" v-model="shareGameHint" placeholder="e.g. orange, banana, apple">
           </label>
         </p>
-        <p>
+        <div>
           <button class="button" @click.prevent="copyShareLink" :disabled="!shareGameAnswer || errors.length">
             Copy share link
           </button>
-        </p>
+          <div class="link-copied-message" v-if="showLinkCopiedMessage">Copied to clipboard</div>
+        </div>
       </div>
     </div>
   </div>
@@ -36,15 +37,16 @@ export default {
   data() {
     return {
       showShareGame: false,
-      shareGameAnswer: null,
-      shareGameHint: null
+      shareGameAnswer: '',
+      shareGameHint: '',
+      showLinkCopiedMessage: false
     }
   },
   computed: {
     errors() {
       const errorMessages = [];
 
-      if (this.shareGameAnswer && this.shareGameAnswer.length < 5) {
+      if (this.shareGameAnswer.trim().length < 5) {
         errorMessages.push('Answer must be 5 letters');
       }
 
@@ -63,10 +65,12 @@ export default {
       let shareString = 'Check out this game:\n';
       let shareUrl = window.location.origin;
       let params = window.btoa(
-        window.encodeURIComponent(`${this.shareGameAnswer}::${this.shareGameHint}`)
+        window.encodeURIComponent(`${this.shareGameAnswer}::${this.shareGameHint.trim()}`)
       );
 
       navigator.clipboard.writeText(`${shareString}${shareUrl}?g=${params}`);
+      this.showLinkCopiedMessage = true;
+      setTimeout(() => { this.showLinkCopiedMessage = false; }, 2000);
     }
   }
 }
@@ -110,5 +114,9 @@ export default {
 }
 .share-game-answer-input::placeholder {
   text-transform: none;
+}
+.link-copied-message {
+  display: inline;
+  margin-left: 10px;
 }
 </style>
