@@ -66,7 +66,10 @@ export default {
 .keyboard-key:active {
   background-color: var(--key-background-color-active);
 }
-.keyboard-key-fit-content {
-  width: fit-content;
+.keyboard-key-enter {
+  width: 52px;
+}
+.keyboard-key-backspace {
+  width: 40px;
 }
 </style>

@@ -26,7 +26,7 @@
     </div>
 
     <div class="keyboard-row">
-      <KeyboardKey keyCode="Backspace" keyLabel="⌫"/>
+      <KeyboardKey keyCode="Enter" class="keyboard-key-enter"/>
       <KeyboardKey keyCode="z"/>
       <KeyboardKey keyCode="x"/>
       <KeyboardKey keyCode="c"/>
@@ -34,7 +34,7 @@
       <KeyboardKey keyCode="b"/>
       <KeyboardKey keyCode="n"/>
       <KeyboardKey keyCode="m"/>
-      <KeyboardKey keyCode="Enter" class="keyboard-key-fit-content"/>
+      <KeyboardKey keyCode="Backspace" keyLabel="⌫" class="keyboard-key-backspace"/>
     </div>
   </div>
 </template>
