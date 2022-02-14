@@ -62,13 +62,12 @@ export default {
       this.showShareGame = false;
     },
     copyShareLink() {
-      let shareString = 'Check out this game:\n';
       let shareUrl = window.location.origin;
       let params = window.btoa(
         window.encodeURIComponent(`${this.shareGameAnswer}::${this.shareGameHint.trim()}`)
       );
 
-      navigator.clipboard.writeText(`${shareString}${shareUrl}?g=${params}`);
+      navigator.clipboard.writeText(`${shareUrl}?g=${params}`);
       this.showLinkCopiedMessage = true;
       setTimeout(() => { this.showLinkCopiedMessage = false; }, 2000);
     }
