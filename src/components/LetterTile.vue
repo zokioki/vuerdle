@@ -95,6 +95,7 @@ export default {
   font-weight: 600;
   font-size: 1.5em;
   border: 2px solid var(--tile-border-color);
+  border-radius: 3px;
   width: 60px;
   height: 60px;
   margin: 6px;
