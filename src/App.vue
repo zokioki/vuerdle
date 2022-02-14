@@ -88,7 +88,7 @@ export default {
     if (gameFromParams) {
       const separator = '::';
       const splitIndex = gameFromParams.indexOf(separator);
-      const answer = gameFromParams.substr(0, splitIndex);
+      const answer = gameFromParams.substr(0, splitIndex).toLowerCase();
       const hint = gameFromParams.substr(splitIndex + separator.length);
 
       this.startNewGame(answer);
