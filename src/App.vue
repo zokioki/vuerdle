@@ -118,7 +118,7 @@ export default {
     });
 
     if (this.isGameComplete) {
-      setTimeout(() => { this.$refs.statistics.show(); }, 600);
+      setTimeout(() => { this.$refs.statistics.$refs.modal.open(); }, 600);
     }
   },
   computed: {
@@ -170,7 +170,7 @@ export default {
         };
 
         this.gameState.previousGames.push(gameData);
-        setTimeout(()=> { this.$refs.statistics.show(); }, 3000);
+        setTimeout(()=> { this.$refs.statistics.$refs.modal.open(); }, 3000);
       }
     },
     setMessage(message, timeout = null) {

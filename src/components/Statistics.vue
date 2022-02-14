@@ -1,46 +1,46 @@
 <template>
   <div class="statistics">
-    <button class="button" @click="show">%</button>
+    <button class="button" @click="$refs.modal.open">%</button>
 
-    <div v-show="showStatistics" class="statistics-container">
-      <div class="statistics-backdrop"></div>
-      <div class="statistics-content">
-        <button class="statistics-close button" @click="hide">X</button>
-        <p><strong>Statistics</strong></p>
-        <div class="stat-entries">
-          <div class="stat-entry">
-            <span class="stat-number">{{this.gamesPlayed()}}</span>
-            <span class="stat-description">Played</span>
-          </div>
-          <div class="stat-entry">
-            <span class="stat-number">{{this.winPercentage()}}</span>
-            <span class="stat-description">Win %</span>
-          </div>
-          <div class="stat-entry">
-            <span class="stat-number">{{this.currentWinStreak()}}</span>
-            <span class="stat-description">Current Streak</span>
-          </div>
-          <div class="stat-entry">
-            <span class="stat-number">{{this.maxWinStreak()}}</span>
-            <span class="stat-description">Max Streak</span>
-          </div>
+    <Modal ref="modal">
+      <p><strong>Statistics</strong></p>
+      <div class="stat-entries">
+        <div class="stat-entry">
+          <span class="stat-number">{{this.gamesPlayed()}}</span>
+          <span class="stat-description">Played</span>
         </div>
-
-        <div class="button-group">
-          <button class="button" @click="startNewGame">New Game</button>
-          <button class="button" @click="shareGame" v-if="parent.isGameComplete">Share</button>
-          <div class="share-message" v-if="showShareMessage">Copied to clipboard</div>
+        <div class="stat-entry">
+          <span class="stat-number">{{this.winPercentage()}}</span>
+          <span class="stat-description">Win %</span>
+        </div>
+        <div class="stat-entry">
+          <span class="stat-number">{{this.currentWinStreak()}}</span>
+          <span class="stat-description">Current Streak</span>
+        </div>
+        <div class="stat-entry">
+          <span class="stat-number">{{this.maxWinStreak()}}</span>
+          <span class="stat-description">Max Streak</span>
         </div>
       </div>
-    </div>
+
+      <div class="button-group">
+        <button class="button" @click="startNewGame">New Game</button>
+        <button class="button" @click="shareGame" v-if="parent.isGameComplete">Share</button>
+        <div class="share-message" v-if="showShareMessage">Copied to clipboard</div>
+      </div>
+    </Modal>
   </div>
 </template>
 
 <script>
+import Modal from './Modal.vue';
 import { savedGameState } from './utils/gameState';
 
 export default {
   name: 'Statistics',
+  components: {
+    Modal
+  },
   props: {
     parent: {
       type: Object,
@@ -49,17 +49,10 @@ export default {
   },
   data() {
     return {
-      showStatistics: false,
       showShareMessage: false,
     }
   },
   methods: {
-    show() {
-      this.showStatistics = true;
-    },
-    hide() {
-      this.showStatistics = false;
-    },
     startNewGame() {
       const shouldStartNewGame = this.parent.isGameComplete || window.confirm(
         'Are you sure you want to start a new game? ' +
@@ -69,7 +62,7 @@ export default {
       if (shouldStartNewGame) {
         this.parent.startNewGame();
         this.parent.setMessage('New game', 2000);
-        this.hide();
+        this.$refs.modal.close();
       }
     },
     shareGame() {
@@ -111,44 +104,9 @@ export default {
 </script>
 
 <style>
-:root {
-  --statistics-background-color: #ffffff;
-}
-.dark-mode {
-  --statistics-background-color: #4a4a4a;
-}
-
-.statistics-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.statistics-backdrop {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.8);
-  width: 100%;
-  height: 100%;
-}
-.statistics-content {
-  position: relative;
-  margin: 2em auto 0 auto;
-  background-color: var(--statistics-background-color);
-  border-radius: 6px;
-  padding: 1em;
-  max-width: 400px;
-  z-index: 999;
-}
-.statistics-content .button-group {
+.statistics .button-group {
   margin-top: 2em;
   justify-content: space-evenly;
-}
-.statistics-content .button-group button {
-  cursor: pointer;
-}
-.statistics-close {
-  float: right;
 }
 .stat-entries {
   display: flex;
