@@ -64,7 +64,7 @@ export default {
     copyShareLink() {
       let shareUrl = window.location.origin;
       let params = window.btoa(
-        window.encodeURIComponent(`${this.shareGameAnswer}::${this.shareGameHint.trim()}`)
+        window.encodeURIComponent(`${this.shareGameAnswer.toLowerCase()}::${this.shareGameHint.trim()}`)
       );
 
       navigator.clipboard.writeText(`${shareUrl}?g=${params}`);
