@@ -37,6 +37,33 @@ export default {
   computed: {
     letters() {
       return this.initialLetters.items;
+    },
+    letterStates() {
+      const result = [];
+      const answerLetters = savedGameState().answer.split('');
+
+      if (!this.isSubmitted()) return result;
+
+      this.letters.forEach((letter, index) => {
+        if (letter === answerLetters[index]) {
+          answerLetters[index] = null;
+          result[index] = 'correct';
+        }
+      });
+
+      this.letters.forEach((letter, index) => {
+        if (result[index]) return;
+
+        if (answerLetters.includes(letter)) {
+          const answerIndex = answerLetters.indexOf(letter);
+          answerLetters[answerIndex] = null;
+          result[index] = 'mispositioned';
+        } else {
+          result[index] = 'incorrect';
+        }
+      });
+
+      return result;
     }
   },
   methods: {

@@ -5,8 +5,6 @@
 </template>
 
 <script>
-import { savedGameState } from './utils/gameState';
-
 export default {
   name: 'LetterTile',
   props: {
@@ -26,40 +24,29 @@ export default {
   },
   computed: {
     classObject() {
+      const object = {};
+
       if (this.parent.isSubmitted()) {
-        return {
-          correct: this.isInCorrectPosition(),
-          incorrect: !this.isInAnswer(),
-          mispositioned: this.isInAnswer() && !this.isInCorrectPosition()
-        };
+        object[this.state] = true;
       } else {
-        return {
-          filled: !!this.letter.length
-        };
+        object['filled'] = !!this.letter.length;
       }
+
+      return object;
+    },
+    state() {
+      return this.parent.letterStates[this.position];
     }
   },
   methods: {
-    positionsInAnswer() {
-      return savedGameState().answer.split('').reduce((positions, letter, index) => {
-        if (letter === this.letter) positions.push(index);
-        return positions;
-      }, []);
-    },
-    isInAnswer() {
-      return this.positionsInAnswer().length > 0;
-    },
-    isInCorrectPosition() {
-      return this.positionsInAnswer().includes(this.position);
-    },
     toIcon() {
-      if (this.isInCorrectPosition()) {
-        return '🟩';
-      } else if (this.isInAnswer() && !this.isInCorrectPosition()) {
-        return '🟨';
-      } else {
-        return '⬛';
-      }
+      const icons = {
+        correct: '🟩',
+        mispositioned: '🟨',
+        incorrect: '⬛'
+      };
+
+      return icons[this.state];
     }
   }
 }
