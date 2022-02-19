@@ -221,6 +221,8 @@ body {
 }
 
 .button {
+  appearance: none;
+  display: inline-block;
   border: none;
   border-bottom: 2px #54874f solid;
   border-radius: 3px;
@@ -228,6 +230,13 @@ body {
   background-color: #6aaa64;
   color: white;
   cursor: pointer;
+  outline: 0;
+  user-select: none;
+  height: 2rem;
+  min-width: 2rem;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
 }
 .button:hover {
   filter: brightness(0.95);
