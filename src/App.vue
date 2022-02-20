@@ -3,13 +3,13 @@
     <div class="game-container">
       <div class="header">
         <div class="button-group">
-          <Instructions/>
-          <ShareGame/>
+          <Instructions ref="instructions"/>
+          <ShareGame ref="shareGame"/>
         </div>
         <h1>VUERDLE</h1>
         <div class="button-group">
           <Statistics ref="statistics" :parent="this"/>
-          <Settings :parent="this" @update-settings="updateSettings"/>
+          <Settings ref="settings" :parent="this" @update-settings="updateSettings"/>
         </div>
       </div>
 
@@ -102,6 +102,7 @@ export default {
   mounted() {
     window.addEventListener('keydown', e => {
       if (this.isGameComplete) return;
+      if (this.modalComponents().some(component => component.$refs.modal.show)) return;
 
       const wordRef = this.$refs.wordRows[this.gameState.currentWordRow];
 
@@ -198,6 +199,14 @@ export default {
       this.startNewGame();
 
       this.setMessage('Data reset', 2000);
+    },
+    modalComponents() {
+      return [
+        this.$refs.instructions,
+        this.$refs.shareGame,
+        this.$refs.statistics,
+        this.$refs.settings
+      ];
     }
   }
 }
