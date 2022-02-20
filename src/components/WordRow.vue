@@ -2,7 +2,7 @@
   <div class="word-row">
     <LetterTile
       ref="letterTiles"
-      v-for="(n, index) in this.letterLimit"
+      v-for="(n, index) in this.wordLength"
       :key="n"
       :letter="letters[index]"
       :position="index"
@@ -25,11 +25,11 @@ export default {
       type: Object,
       required: true
     },
-    letterLimit: {
-      type: Number,
-      default: 5
-    },
     position: {
+      type: Number,
+      required: true
+    },
+    wordLength: {
       type: Number,
       required: true
     }
@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     addLetter(value) {
-      if (this.letters.length >= this.letterLimit) return;
+      if (this.letters.length >= this.wordLength) return;
       this.letters.push(value);
     },
     removeLetter() {

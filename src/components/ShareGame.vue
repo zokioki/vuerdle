@@ -8,13 +8,13 @@
       <p>
         <label>
           <div>Answer</div>
-          <input type="text" maxlength="5" v-model="shareGameAnswer" class="share-game-answer-input" placeholder="e.g. fruit">
+          <input type="text" :maxlength="parent.gameState.wordLength" v-model="shareGameAnswer" class="share-game-answer-input" placeholder="e.g. fruit">
         </label>
       </p>
       <p>
         <label>
-          <div>Hint <small>(optional)</small></div>
-          <input type="text" maxlength="40" v-model="shareGameHint" placeholder="e.g. orange, banana, apple">
+          <div>Hint <small>(optional, {{hintCharacterLimit - shareGameHint.length}} characters remaining)</small></div>
+          <input type="text" :maxlength="hintCharacterLimit" v-model="shareGameHint" placeholder="e.g. orange, banana, apple">
         </label>
       </p>
       <div>
@@ -35,19 +35,27 @@ export default {
   components: {
     Modal
   },
+  props: {
+    parent: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       shareGameAnswer: '',
       shareGameHint: '',
+      hintCharacterLimit: 40,
       showLinkCopiedMessage: false
     }
   },
   computed: {
     errors() {
       const errorMessages = [];
+      const wordLength = this.parent.gameState.wordLength;
 
-      if (this.shareGameAnswer.trim().length < 5) {
-        errorMessages.push('Answer must be 5 letters');
+      if (this.shareGameAnswer.trim().length < wordLength) {
+        errorMessages.push(`Answer must be ${wordLength} letters`);
       }
 
       return errorMessages;

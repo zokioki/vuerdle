@@ -3,6 +3,8 @@ function defaultGameState() {
     answer: null,
     currentWordRow: 0,
     submittedWords: [],
+    wordLength: 5,
+    guessLimit: 6,
     darkMode: false,
     colorBlindMode: false,
     sharedGame: false,

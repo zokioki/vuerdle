@@ -3,8 +3,8 @@
     <div class="game-container">
       <div class="header">
         <div class="button-group">
-          <Instructions ref="instructions"/>
-          <ShareGame ref="shareGame"/>
+          <Instructions ref="instructions" :parent="this"/>
+          <ShareGame ref="shareGame" :parent="this"/>
         </div>
         <h1>VUERDLE</h1>
         <div class="button-group">
@@ -24,10 +24,11 @@
       <div class="word-rows">
         <WordRow
           ref="wordRows"
-          v-for="(n, index) in 6"
+          v-for="(n, index) in gameState.guessLimit"
           :key="n"
           :position="index"
           :initial-letters="getInitialLetters(index)"
+          :word-length="gameState.wordLength"
         />
       </div>
 
@@ -124,8 +125,8 @@ export default {
   },
   computed: {
     isGameComplete() {
-      const { submittedWords, answer } = this.gameState;
-      return submittedWords.length === 6 || submittedWords.includes(answer);
+      const { submittedWords, guessLimit, answer } = this.gameState;
+      return submittedWords.length === guessLimit || submittedWords.includes(answer);
     }
   },
   methods: {
@@ -144,7 +145,7 @@ export default {
       this.gameState[target.name] = value;
     },
     checkAnswer(word) {
-      if (word.length !== 5) return;
+      if (word.length !== this.gameState.wordLength) return;
       if (!this.gameState.sharedGame && !this.wordList.includes(word) && !this.allowedGuessList.includes(word)) {
         this.setMessage('Word not in list', 2000);
         return;
