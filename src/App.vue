@@ -242,7 +242,7 @@ body {
   outline: 0;
   user-select: none;
   height: 2rem;
-  min-width: 2rem;
+  min-width: 2.5rem;
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
