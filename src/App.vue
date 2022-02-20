@@ -252,7 +252,6 @@ body {
 }
 .button:active {
   border-bottom: none;
-  margin-top: 2px;
 }
 .button:disabled {
   opacity: 0.7;
