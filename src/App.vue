@@ -119,7 +119,7 @@ export default {
     });
 
     if (this.isGameComplete) {
-      setTimeout(() => { this.$refs.statistics.$refs.modal.open(); }, 600);
+      setTimeout(() => { this.$refs.statistics.$refs.modal.open(); }, 200);
     }
   },
   computed: {
