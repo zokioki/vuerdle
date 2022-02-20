@@ -218,12 +218,17 @@ export default {
   --background-color: #ffffff;
   --text-color: #2c3e50;
   --link-color: #5374d5;
+  --primary-color: #6aaa64;
 }
 
 .dark-mode {
   --background-color: #121213;
   --text-color: #ffffff;
   --link-color: var(--text-color);
+}
+
+.color-blind-mode {
+  --primary-color: #f5793a;
 }
 
 body {
@@ -234,10 +239,10 @@ body {
   appearance: none;
   display: inline-block;
   border: none;
-  border-bottom: 2px #54874f solid;
+  border-bottom: 2px rgba(50, 50, 50, 0.4) solid;
   border-radius: 3px;
   padding: 0.5em 1em;
-  background-color: #6aaa64;
+  background-color: var(--primary-color);
   color: white;
   cursor: pointer;
   outline: 0;
