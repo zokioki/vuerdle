@@ -1,6 +1,6 @@
 <template>
   <div class="share-game">
-    <button class="button" @click="openModal">↣</button>
+    <button class="button" @click="openModal">➤</button>
 
     <Modal ref="modal">
       <p><strong>Share a game</strong></p>
