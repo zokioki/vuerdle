@@ -10,8 +10,8 @@
           <span class="stat-description">Played</span>
         </div>
         <div class="stat-entry">
-          <span class="stat-number">{{this.winPercentage()}}</span>
-          <span class="stat-description">Win %</span>
+          <span class="stat-number">{{this.winPercentage()}}%</span>
+          <span class="stat-description">Win Rate</span>
         </div>
         <div class="stat-entry">
           <span class="stat-number">{{this.currentWinStreak()}}</span>
