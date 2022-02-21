@@ -7,7 +7,10 @@
     <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<%= BASE_URL %>favicon-16x16.png">
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <meta name="description" content="A fun word game.">
+    <meta name="description" content="A word guessing game. Find the hidden word in as few tries as you can.">
+    <meta property="og:image" content="<%= BASE_URL %>og-banner.png">
+    <meta property="og:description" content="Guess the hidden word in as few tries as possible.">
+    <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>">
   </head>
   <body>
     <noscript>
