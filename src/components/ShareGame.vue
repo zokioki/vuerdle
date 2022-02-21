@@ -58,6 +58,10 @@ export default {
         errorMessages.push(`Answer must be ${wordLength} letters`);
       }
 
+      if (this.shareGameHint.trim().length > this.hintCharacterLimit) {
+        errorMessages.push(`Hint must be under ${this.hintCharacterLimit} characters`);
+      }
+
       return errorMessages;
     }
   },
