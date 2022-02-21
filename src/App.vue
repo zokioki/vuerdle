@@ -288,8 +288,8 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-  border-color: #6aaa64;
-  box-shadow: 0 0 0 0.1rem rgb(85 217 120 / 25%);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.1rem var(--primary-color);
 }
 
 input[type="checkbox"] {
