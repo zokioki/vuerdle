@@ -45,7 +45,7 @@ export default {
   height: 100%;
 }
 .modal-backdrop {
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.8);
   width: 100%;
   height: 100%;
