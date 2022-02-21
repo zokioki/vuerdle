@@ -292,6 +292,41 @@ input[type="text"]:focus {
   box-shadow: 0 0 0 0.1rem rgb(85 217 120 / 25%);
 }
 
+input[type="checkbox"] {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  color: #000000;
+  border: 1px solid #bcc3ce;
+  border-radius: 3px;
+  appearance: none;
+  margin: 0;
+  cursor: pointer;
+  transition: background 100ms ease;
+}
+input[type="checkbox"]::before {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 1px;
+  left: 5px;
+  width: 3px;
+  height: 7px;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+input[type="checkbox"]:checked {
+  color: #ffffff;
+  border-color: var(--primary-color);
+  background: var(--primary-color);
+}
+input[type="checkbox"]:checked::before {
+  opacity: 1;
+}
+
 a {
   color: var(--link-color);
   text-underline-offset: 0.25rem;
