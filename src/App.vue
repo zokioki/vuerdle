@@ -78,8 +78,7 @@ export default {
     }, { deep: true });
 
     if (!this.gameState.answer) {
-      const randomWordIndex = Math.floor(Math.random() * this.wordList.length);
-      this.gameState.answer = this.wordList[randomWordIndex];
+      this.gameState.answer = this.getRandomWordListEntry();
     }
 
     const sharedGame = decodeSharedGameParams();
@@ -131,6 +130,10 @@ export default {
 
       return reactive({ items: word.split('') });
     },
+    getRandomWordListEntry() {
+      const randomWordIndex = Math.floor(Math.random() * this.wordList.length);
+      return this.wordList[randomWordIndex];
+    },
     updateSettings(event) {
       const target = event.target;
       const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -181,12 +184,7 @@ export default {
       this.gameState.colorBlindMode = colorBlindMode;
       this.inProgressWord = '';
 
-      if (answer) {
-        this.gameState.answer = answer;
-      } else {
-        const randomWordIndex = Math.floor(Math.random() * this.wordList.length);
-        this.gameState.answer = this.wordList[randomWordIndex];
-      }
+      this.gameState.answer = answer || this.getRandomWordListEntry();
     },
     resetData() {
       this.gameState = defaultGameState();
