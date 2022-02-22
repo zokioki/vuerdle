@@ -16,9 +16,9 @@
           Color Blind Mode
         </label>
       </p>
-      <p>
+      <div class="reset-data">
         <a href="#" @click.prevent="resetData">Reset data</a>
-      </p>
+      </div>
     </Modal>
   </div>
 </template>
@@ -58,4 +58,7 @@ export default {
 </script>
 
 <style>
+.reset-data {
+  margin-top: 2rem;
+}
 </style>
