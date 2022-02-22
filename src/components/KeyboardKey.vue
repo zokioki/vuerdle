@@ -36,12 +36,10 @@ export default {
 <style>
 :root {
   --key-background-color: #ffffff;
-  --key-background-color-active: #efefef;
 }
 
 .dark-mode {
   --key-background-color: #818181;
-  --key-background-color-active: #707070;
 }
 
 .keyboard-key {
@@ -64,7 +62,8 @@ export default {
   user-select: none;
 }
 .keyboard-key:active {
-  background-color: var(--key-background-color-active);
+  filter: brightness(0.95);
+  border-bottom: none;
 }
 .keyboard-key-enter {
   width: 52px;
