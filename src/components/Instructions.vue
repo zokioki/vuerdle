@@ -1,6 +1,6 @@
 <template>
   <div class="instructions">
-    <button class="button" @click="$refs.modal.open">?</button>
+    <button class="button" @click="$refs.modal.open" tabindex="-1">?</button>
 
     <Modal ref="modal">
       <p><strong>How to play</strong></p>
