@@ -7,7 +7,7 @@
       <p>Guess the word in {{parent.gameState.guessLimit}} tries. Each guess must be a valid {{parent.gameState.wordLength}} letter word. Hit the <em>Enter</em> button to submit.</p>
       <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
 
-      <div class="examples">
+      <div class="word-examples">
         <strong>Examples</strong>
         <div class="word-row">
           <div class="letter-tile correct">W</div>
@@ -58,15 +58,15 @@ export default {
 </script>
 
 <style>
-.examples .word-row {
+.word-examples .word-row {
   margin-top: 1em;
 }
-.examples .letter-tile {
+.word-examples .letter-tile {
   width: 40px;
   height: 40px;
   margin: 4px;
 }
-.examples .letter-tile:first-child {
+.word-examples .letter-tile:first-child {
   margin-left: 0;
 }
 </style>

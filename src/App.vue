@@ -214,6 +214,7 @@ export default {
 </script>
 
 <style>
+/* Global styles */
 :root {
   --background-color: #ffffff;
   --text-color: #2c3e50;
@@ -235,38 +236,6 @@ body {
   margin: 0;
 }
 
-.button {
-  appearance: none;
-  display: inline-block;
-  border: none;
-  border-bottom: 2px rgba(50, 50, 50, 0.4) solid;
-  border-radius: 3px;
-  padding: 0.5em 1em;
-  background-color: var(--primary-color);
-  color: white;
-  cursor: pointer;
-  outline: 0;
-  user-select: none;
-  height: 2rem;
-  min-width: 2.5rem;
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-}
-.button:hover {
-  filter: brightness(0.95);
-}
-.button:active {
-  border-bottom: none;
-}
-.button:disabled {
-  opacity: 0.7;
-}
-
-.button-group {
-  display: flex;
-}
-
 input[type="text"] {
   appearance: none;
   background: var(--background-color);
@@ -286,7 +255,6 @@ input[type="text"] {
   transition: background .2s,border .2s,box-shadow .2s,color .2s;
   width: 100%;
 }
-
 input[type="text"]:focus {
   border-color: var(--primary-color);
   box-shadow: 0 0 0 0.1rem var(--primary-color);
@@ -332,10 +300,42 @@ a {
   text-underline-offset: 0.25rem;
   text-decoration-thickness: 0.08rem;
 }
-
 a:hover {
   filter: brightness(0.85);
 }
+
+.button {
+  appearance: none;
+  display: inline-block;
+  border: none;
+  border-bottom: 2px rgba(50, 50, 50, 0.4) solid;
+  border-radius: 3px;
+  padding: 0.5em 1em;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  outline: 0;
+  user-select: none;
+  height: 2rem;
+  min-width: 2.5rem;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+}
+.button:hover {
+  filter: brightness(0.95);
+}
+.button:active {
+  border-bottom: none;
+}
+.button:disabled {
+  opacity: 0.7;
+}
+
+.button-group {
+  display: flex;
+}
+/* End global styles */
 
 .game-root {
   font-family: Avenir, Helvetica, Arial, sans-serif;

@@ -94,20 +94,20 @@ export default {
 .letter-tile:last-child {
   margin-right: 0;
 }
-.filled {
+.letter-tile.filled {
   border-color: var(--filled-tile-border-color);
 }
-.correct {
+.letter-tile.correct {
   border-color: var(--correct-color);
   background-color: var(--correct-color);
   color: white;
 }
-.incorrect {
+.letter-tile.incorrect {
   border-color: var(--incorrect-color);
   background-color: var(--incorrect-color);
   color: white;
 }
-.mispositioned {
+.letter-tile.mispositioned {
   border-color: var(--mispositioned-color);
   background-color: var(--mispositioned-color);
   color: white;
