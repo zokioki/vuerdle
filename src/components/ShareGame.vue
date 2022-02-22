@@ -29,6 +29,7 @@
 
 <script>
 import Modal from './Modal.vue';
+import { encodeSharedGameParams } from './utils/sharedGame';
 
 export default {
   name: 'ShareGame',
@@ -72,9 +73,10 @@ export default {
     },
     copyShareLink() {
       let shareUrl = window.location.origin;
-      let params = window.btoa(
-        window.encodeURIComponent(`${this.shareGameAnswer.toLowerCase()}::${this.shareGameHint.trim()}`)
-      );
+      let params = encodeSharedGameParams({
+        answer: this.shareGameAnswer,
+        hint: this.shareGameHint
+      });
 
       navigator.clipboard.writeText(`${shareUrl}?g=${params}`);
       this.showLinkCopiedMessage = true;

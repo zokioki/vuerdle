@@ -40,6 +40,7 @@
 <script>
 import { reactive } from 'vue';
 import { defaultGameState, savedGameState } from './components/utils/gameState';
+import { decodeSharedGameParams } from './components/utils/sharedGame';
 import Instructions from './components/Instructions.vue';
 import Statistics from './components/Statistics.vue';
 import ShareGame from './components/ShareGame.vue';
@@ -81,21 +82,13 @@ export default {
       this.gameState.answer = this.wordList[randomWordIndex];
     }
 
-    const queryParams = new URLSearchParams(window.location.search);
-    const gameFromParams = window.decodeURIComponent(
-      window.atob(queryParams.get('g') || '')
-    );
+    const sharedGame = decodeSharedGameParams();
 
-    if (gameFromParams) {
-      const separator = '::';
-      const splitIndex = gameFromParams.indexOf(separator);
-      const answer = gameFromParams.substr(0, splitIndex).toLowerCase();
-      const hint = gameFromParams.substr(splitIndex + separator.length);
-
-      this.startNewGame(answer);
+    if (sharedGame) {
+      this.startNewGame(sharedGame.answer);
 
       this.gameState.sharedGame = true;
-      this.gameState.sharedGameHint = hint;
+      this.gameState.sharedGameHint = sharedGame.hint;
 
       window.history.replaceState({}, document.title, '/');
     }
