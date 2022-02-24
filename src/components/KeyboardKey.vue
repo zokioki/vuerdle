@@ -1,5 +1,5 @@
 <template>
-  <div class="keyboard-key" @click="handleKeyClick">
+  <div class="keyboard-key" :class="classObject" @click="handleKeyClick">
     {{keyLabel}}
   </div>
 </template>
@@ -7,6 +7,9 @@
 <script>
 export default {
   name: 'KeyboardKey',
+  inject: [
+    'letterStatesMap'
+  ],
   props: {
     keyCode: {
       type: String,
@@ -15,6 +18,16 @@ export default {
     keyLabel: {
       type: String,
       default: (props) => props.keyCode
+    }
+  },
+  computed: {
+    classObject() {
+      const object = {};
+      const state = this.letterStatesMap[this.keyCode];
+
+      if (state) object[state] = true;
+
+      return object;
     }
   },
   methods: {
@@ -70,5 +83,17 @@ export default {
 }
 .keyboard-key-backspace {
   width: 40px;
+}
+.keyboard-key.correct {
+  background-color: var(--correct-color);
+  color: #ffffff;
+}
+.keyboard-key.incorrect {
+  background-color: var(--incorrect-color);
+  color: #ffffff;
+}
+.keyboard-key.mispositioned {
+  background-color: var(--mispositioned-color);
+  color: #ffffff;
 }
 </style>
