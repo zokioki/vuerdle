@@ -7,6 +7,7 @@ function defaultGameState() {
     guessLimit: 6,
     darkMode: false,
     colorBlindMode: false,
+    colorKeyboard: true,
     sharedGame: false,
     sharedGameHint: null,
     previousGames: []

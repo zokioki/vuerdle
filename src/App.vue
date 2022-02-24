@@ -62,6 +62,7 @@ export default {
   },
   provide() {
     return {
+      gameState: computed(() => this.gameState),
       letterStatesMatrix: computed(() => this.letterStatesMatrix),
       letterStatesMap: computed(() => this.letterStatesMap)
     };
@@ -230,12 +231,13 @@ export default {
       setTimeout(() => { this.message = null; }, timeout || 3000);
     },
     startNewGame(answer = null) {
-      const { previousGames, darkMode, colorBlindMode } = this.gameState;
+      const { previousGames, darkMode, colorBlindMode, colorKeyboard } = this.gameState;
 
       this.gameState = defaultGameState();
       this.gameState.previousGames = previousGames;
       this.gameState.darkMode = darkMode;
       this.gameState.colorBlindMode = colorBlindMode;
+      this.gameState.colorKeyboard = colorKeyboard;
       this.inProgressWord = '';
 
       this.gameState.answer = answer || this.getRandomWordListEntry();

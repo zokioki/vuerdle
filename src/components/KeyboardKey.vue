@@ -8,6 +8,7 @@
 export default {
   name: 'KeyboardKey',
   inject: [
+    'gameState',
     'letterStatesMap'
   ],
   props: {
@@ -25,7 +26,7 @@ export default {
       const object = {};
       const state = this.letterStatesMap[this.keyCode];
 
-      if (state) object[state] = true;
+      if (this.gameState.colorKeyboard && state) object[state] = true;
 
       return object;
     }

@@ -16,6 +16,13 @@
           Color Blind Mode
         </label>
       </p>
+      <p>
+        <label>
+          <input type="checkbox" name="colorKeyboard" :checked="parent.gameState.colorKeyboard" @change="emitSettingsChange">
+          Show Keyboard Colors
+        </label>
+      </p>
+
       <div class="reset-data">
         <a href="#" @click.prevent="resetData">Reset data</a>
       </div>
