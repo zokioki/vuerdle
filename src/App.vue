@@ -303,6 +303,12 @@ a:hover {
   filter: brightness(0.85);
 }
 
+hr {
+  border: 0.01rem solid #d9d9d9;
+  margin: 0.5rem 0;
+  height: 0;
+}
+
 .button {
   appearance: none;
   display: inline-block;
@@ -311,7 +317,7 @@ a:hover {
   border-radius: 3px;
   padding: 0.5em 1em;
   background-color: var(--primary-color);
-  color: white;
+  color: #ffffff;
   cursor: pointer;
   outline: 0;
   user-select: none;

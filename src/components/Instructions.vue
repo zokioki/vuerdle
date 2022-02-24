@@ -36,6 +36,15 @@
         </div>
         <div>The letter <strong>U</strong> is not in the word in any spot.</div>
       </div>
+
+      <hr>
+
+      <div>
+        <small>
+          Vuerdle is an open source game.
+          <a href="https://github.com/zokioki/vuerdle">View the source code</a>
+        </small>
+      </div>
     </Modal>
   </div>
 </template>
@@ -55,8 +64,11 @@ export default {
 </script>
 
 <style>
+.word-examples {
+  margin-bottom: 2rem;
+}
 .word-examples .word-row {
-  margin-top: 1em;
+  margin-top: 1rem;
 }
 .word-examples .letter-tile {
   width: 40px;

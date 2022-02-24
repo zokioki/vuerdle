@@ -100,16 +100,16 @@ export default {
 .letter-tile.correct {
   border-color: var(--correct-color);
   background-color: var(--correct-color);
-  color: white;
+  color: #ffffff;
 }
 .letter-tile.incorrect {
   border-color: var(--incorrect-color);
   background-color: var(--incorrect-color);
-  color: white;
+  color: #ffffff;
 }
 .letter-tile.mispositioned {
   border-color: var(--mispositioned-color);
   background-color: var(--mispositioned-color);
-  color: white;
+  color: #ffffff;
 }
 </style>
