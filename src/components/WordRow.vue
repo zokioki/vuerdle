@@ -13,7 +13,6 @@
 
 <script>
 import LetterTile from './LetterTile.vue';
-import { savedGameState } from './utils/gameState';
 
 export default {
   name: 'WordRow',
@@ -21,6 +20,7 @@ export default {
     LetterTile
   },
   inject: [
+    'gameState',
     'letterStatesMatrix'
   ],
   props: {
@@ -42,7 +42,7 @@ export default {
       return this.initialLetters.items;
     },
     letterStates() {
-      return this.letterStatesMatrix[this.position];
+      return this.letterStatesMatrix[this.position] || [];
     }
   },
   methods: {
@@ -60,9 +60,8 @@ export default {
       return this.$refs.letterTiles.map(tile => tile.toIcon()).join('');
     },
     isSubmitted() {
-      const gameState = savedGameState();
-      return gameState.submittedWords.includes(this.toString()) &&
-             this.position < gameState.currentWordRow;
+      return this.gameState.submittedWords.includes(this.toString()) &&
+             this.position < this.gameState.currentWordRow;
     }
   }
 }

@@ -6,19 +6,19 @@
       <p><strong>Settings</strong></p>
       <p>
         <label>
-          <input type="checkbox" name="darkMode" :checked="parent.gameState.darkMode" @change="emitSettingsChange">
+          <input type="checkbox" name="darkMode" :checked="gameState.darkMode" @change="emitSettingsChange">
           Dark Mode
         </label>
       </p>
       <p>
         <label>
-          <input type="checkbox" name="colorBlindMode" :checked="parent.gameState.colorBlindMode" @change="emitSettingsChange">
+          <input type="checkbox" name="colorBlindMode" :checked="gameState.colorBlindMode" @change="emitSettingsChange">
           Color Blind Mode
         </label>
       </p>
       <p>
         <label>
-          <input type="checkbox" name="colorKeyboard" :checked="parent.gameState.colorKeyboard" @change="emitSettingsChange">
+          <input type="checkbox" name="colorKeyboard" :checked="gameState.colorKeyboard" @change="emitSettingsChange">
           Show Keyboard Colors
         </label>
       </p>
@@ -38,6 +38,9 @@ export default {
   components: {
     Modal
   },
+  inject: [
+    'gameState'
+  ],
   emits: ['updateSettings'],
   props: {
     parent: {

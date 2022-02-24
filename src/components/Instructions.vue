@@ -4,7 +4,7 @@
 
     <Modal ref="modal">
       <p><strong>How to play</strong></p>
-      <p>Guess the word in {{parent.gameState.guessLimit}} tries. Each guess must be a valid {{parent.gameState.wordLength}} letter word. Hit the <em>Enter</em> button to submit.</p>
+      <p>Guess the word in {{gameState.guessLimit}} tries. Each guess must be a valid {{gameState.wordLength}} letter word. Hit the <em>Enter</em> button to submit.</p>
       <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
 
       <div class="word-examples">
@@ -48,12 +48,9 @@ export default {
   components: {
     Modal
   },
-  props: {
-    parent: {
-      type: Object,
-      required: true
-    }
-  }
+  inject: [
+    'gameState'
+  ]
 }
 </script>
 

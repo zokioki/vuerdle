@@ -8,7 +8,7 @@
       <p>
         <label>
           <div>Answer</div>
-          <input type="text" :maxlength="parent.gameState.wordLength" v-model="shareGameAnswer" class="share-game-answer-input" placeholder="e.g. fruit">
+          <input type="text" :maxlength="gameState.wordLength" v-model="shareGameAnswer" class="share-game-answer-input" placeholder="e.g. fruit">
         </label>
       </p>
       <p>
@@ -36,12 +36,9 @@ export default {
   components: {
     Modal
   },
-  props: {
-    parent: {
-      type: Object,
-      required: true
-    }
-  },
+  inject: [
+    'gameState'
+  ],
   data() {
     return {
       shareGameAnswer: '',
@@ -53,7 +50,7 @@ export default {
   computed: {
     errors() {
       const errorMessages = [];
-      const wordLength = this.parent.gameState.wordLength;
+      const wordLength = this.gameState.wordLength;
 
       if (this.shareGameAnswer.trim().length < wordLength) {
         errorMessages.push(`Answer must be ${wordLength} letters`);

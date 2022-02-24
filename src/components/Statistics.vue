@@ -34,13 +34,15 @@
 
 <script>
 import Modal from './Modal.vue';
-import { savedGameState } from './utils/gameState';
 
 export default {
   name: 'Statistics',
   components: {
     Modal
   },
+  inject: [
+    'gameState'
+  ],
   props: {
     parent: {
       type: Object,
@@ -75,10 +77,10 @@ export default {
       setTimeout(() => { this.showShareMessage = false; }, 2000);
     },
     gamesPlayed() {
-      return savedGameState().previousGames.length;
+      return this.gameState.previousGames.length;
     },
     winPercentage() {
-      const { previousGames } = savedGameState();
+      const { previousGames } = this.gameState;
       const gamesWon = previousGames.filter(game => game.won);
 
       if (!previousGames.length) return 0;
@@ -94,7 +96,7 @@ export default {
       return Math.max(...this.winStreaks());
     },
     winStreaks() {
-      return savedGameState().previousGames.reduce((streaks, game) => {
+      return this.gameState.previousGames.reduce((streaks, game) => {
         game.won ? streaks[streaks.length - 1]++ : streaks.push(0);
         return streaks;
       }, [0]);

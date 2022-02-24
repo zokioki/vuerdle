@@ -3,8 +3,8 @@
     <div class="game-container">
       <div class="header">
         <div class="button-group">
-          <Instructions ref="instructions" :parent="this"/>
-          <ShareGame ref="shareGame" :parent="this"/>
+          <Instructions ref="instructions"/>
+          <ShareGame ref="shareGame"/>
         </div>
         <h1>VUERDLE</h1>
         <div class="button-group">
