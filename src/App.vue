@@ -39,7 +39,7 @@
 
 <script>
 import { computed, reactive } from 'vue';
-import { defaultGameState, savedGameState } from './components/utils/gameState';
+import { defaultGameState, savedGameState, letterStatesMatrix, letterStatesMap } from './components/utils/gameState';
 import { decodeSharedGameParams } from './components/utils/sharedGame';
 import Instructions from './components/Instructions.vue';
 import Statistics from './components/Statistics.vue';
@@ -63,8 +63,8 @@ export default {
   provide() {
     return {
       gameState: computed(() => this.gameState),
-      letterStatesMatrix: computed(() => this.letterStatesMatrix),
-      letterStatesMap: computed(() => this.letterStatesMap)
+      letterStatesMatrix: computed(() => letterStatesMatrix(this.gameState)),
+      letterStatesMap: computed(() => letterStatesMap(this.gameState))
     };
   },
   data() {
@@ -126,54 +126,6 @@ export default {
     isGameComplete() {
       const { submittedWords, guessLimit, answer } = this.gameState;
       return submittedWords.length === guessLimit || submittedWords.includes(answer);
-    },
-    letterStatesMatrix() {
-      const result = [];
-
-      this.gameState.submittedWords.forEach(submittedWord => {
-        const rowResult = [];
-        const answerLetters = this.gameState.answer.split('');
-        const submittedWordLetters = submittedWord.split('');
-
-        submittedWordLetters.forEach((letter, index) => {
-          if (letter === answerLetters[index]) {
-            answerLetters[index] = null;
-            rowResult[index] = 'correct';
-          }
-        });
-
-        submittedWordLetters.forEach((letter, index) => {
-          if (rowResult[index]) return;
-
-          if (answerLetters.includes(letter)) {
-            const answerIndex = answerLetters.indexOf(letter);
-            answerLetters[answerIndex] = null;
-            rowResult[index] = 'mispositioned';
-          } else {
-            rowResult[index] = 'incorrect';
-          }
-        });
-
-        result.push(rowResult);
-      });
-
-      return result;
-    },
-    letterStatesMap() {
-      const result = {};
-      const orderedStates = ['incorrect', 'mispositioned', 'correct'];
-
-      this.gameState.submittedWords.forEach((submittedWord, rowIndex) => {
-        submittedWord.split('').forEach((letter, colIndex) => {
-          const state = this.letterStatesMatrix[rowIndex][colIndex];
-
-          if (orderedStates.indexOf(state) > orderedStates.indexOf(result[letter])) {
-            result[letter] = state;
-          }
-        });
-      });
-
-      return result;
     }
   },
   methods: {
