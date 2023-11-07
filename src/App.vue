@@ -47,8 +47,8 @@ import ShareGame from './components/ShareGame.vue';
 import Settings from './components/Settings.vue';
 import WordRow from './components/WordRow.vue';
 import Keyboard from './components/Keyboard.vue';
-import WordList from './data/word-list.txt';
-import AllowedGuessList from './data/allowed-guess-list.txt';
+import WordList from './data/word-list.txt?raw';
+import AllowedGuessList from './data/allowed-guess-list.txt?raw';
 
 export default {
   name: 'App',

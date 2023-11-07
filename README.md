@@ -10,16 +10,10 @@ To run this app locally, clone it and `cd` into the root directory, then run:
 
 ```
 yarn install
-yarn serve
+yarn dev
 ```
 
-The above will install dependencies, compile the code, and serve the app on `http://localhost:8080`.
-
-To run linting on the code, you can use the following command:
-
-```
-yarn lint
-```
+The above will install dependencies, compile the code, and serve the app on `http://localhost:5173`.
 
 ### Production
 
